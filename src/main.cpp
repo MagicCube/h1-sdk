@@ -2,8 +2,9 @@
 
 #define DEBUG
 
-#include <H1CoreFoundation.h>
-#include <H1CoreGraphics.h>
+#include <h1.CoreFoundation.h>
+#include <h1.CoreGraphics.h>
+#include <h1.UI.h>
 
 void setup() {
   Serial.begin(115200);
