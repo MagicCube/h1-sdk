@@ -10,6 +10,29 @@ typedef int16_t cg_unit_t;
 // Normally it's 16 bit.
 typedef uint16_t cg_color_t;
 
+// Define the font size.
+typedef uint8_t cg_font_size_t;
+
+// Specify font family.
+enum class CGFontFamily {
+  // Original Adafruit 8 pixel font.
+  ADAFRUIT_8PX = 101,
+
+  // Small 16 pixel high font.
+  SMALL_16PX = 102,
+
+  // Medium 26 pixel high font.
+  MEDIUM_26PX = 104,
+
+  // Large 48 pixel font, only contains characters 1234567890:-.apm.
+  LARGE_48PX = 106,
+
+  // 7 segment 48 pixel font, only contains characters 1234567890:-.
+  DIGITAL_7_SEGMENT_48PX = 107,
+
+  // Large 75 pixel font, only contains characters 1234567890:-.
+  LARGE_75PX = 108
+};
 
 // Specify the depth of color, also known as BPP (Bit per Pixel).
 enum class CGColorDepth {
