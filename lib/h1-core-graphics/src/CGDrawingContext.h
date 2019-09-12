@@ -7,6 +7,7 @@
 #include "CGPoint.h"
 #include "CGRect.h"
 #include "CGSize.h"
+#include "colors.h"
 #include "types.h"
 
 // A class describes visual content using draw, push, and pop commands.
@@ -22,6 +23,24 @@ public:
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
   CGRect frame();
+
+  // Gets current font family.
+  CGFontFamily fontFamily();
+
+  // Sets current font family.
+  void fontFamily(CGFontFamily value);
+
+  // Gets current font size.
+  cg_font_size_t fontSize();
+
+  // Sets current font size.
+  void fontSize(cg_font_size_t value);
+
+  // Gets current text color.
+  cg_color_t textColor();
+
+  // Sets current text color.
+  void textColor(cg_color_t value);
 
   // Draws a pixel at given point.
   void drawPixel(CGPoint point, cg_color_t color);
@@ -99,6 +118,10 @@ private:
 
   // True if the context is a sprite.
   bool _inMemory;
+
+  cg_color_t _textColor = CG_COLOR_WHITE;
+  CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
+  cg_font_size_t _fontSize = 1;
 
   TFT_eSPI *_drawable;
 };

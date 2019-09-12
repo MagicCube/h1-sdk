@@ -15,6 +15,34 @@ CGRect CGDrawingContext::frame() {
   return _frame;
 }
 
+CGFontFamily CGDrawingContext::fontFamily() {
+  return _fontFamily;
+}
+
+void CGDrawingContext::fontFamily(CGFontFamily value) {
+  _fontFamily = value;
+  uint8_t _fontFamilyValue = (uint8_t)_fontFamily;
+  if (_fontFamilyValue > 100 && _fontFamilyValue < 110) {
+    _drawable->setTextFont(_fontFamilyValue - 100);
+  }
+}
+
+cg_font_size_t CGDrawingContext::fontSize() {
+  return _fontSize;
+}
+
+void CGDrawingContext::fontSize(cg_font_size_t value) {
+  _fontSize = value;
+}
+
+cg_color_t CGDrawingContext::textColor() {
+  return _textColor;
+}
+
+void CGDrawingContext::textColor(cg_color_t value) {
+  _textColor = value;
+}
+
 void CGDrawingContext::drawPixel(CGPoint point, cg_color_t color) {
   auto absPoint = translatePoint(point);
   _drawable->drawPixel(absPoint.x, absPoint.y, color);
