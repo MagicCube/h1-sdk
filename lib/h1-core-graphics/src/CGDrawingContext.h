@@ -16,7 +16,8 @@
 class CGDrawingContext {
 public:
   // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(TFT_eSPI *tft, CGRect frame, bool inMemory);
+  // The `drawable` could be a `TFT_eSPI` or `TFT_eSprite`.
+  CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory);
 
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
