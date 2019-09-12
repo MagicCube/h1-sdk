@@ -93,8 +93,8 @@ protected:
 private:
   CGRect _frame;
 
-  TFT_eSPI *_drawable;
-
   // Equals true if the origin of this context is (0, 0).
   bool _zeroTranslation;
+
+  TFT_eSPI *_drawable;
 };
