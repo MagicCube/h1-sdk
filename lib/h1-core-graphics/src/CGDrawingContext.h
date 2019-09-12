@@ -16,10 +16,7 @@
 class CGDrawingContext {
 public:
   // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(CGRect frame);
-
-  // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(CGRect frame, TFT_eSPI *tft);
+  CGDrawingContext(TFT_eSPI *tft, CGRect frame);
 
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
@@ -47,8 +44,8 @@ public:
   void drawCircle(CGPoint center, cg_unit_t radius, cg_color_t color);
 
   // Draws text at given position.
-  // You can specify font and color by font(v), fontSize(v) and
-  // textColor(v), while use textAlign(v) to set text alignment.
+  // You can specify font and color by `font(v)`, `fontSize(v)` and
+  // `textColor(v)`, while use `textAlign(v)` to set text alignment.
   void drawString(String string, CGPoint position);
 
   // Fills the contextual canvas with given color.
@@ -89,10 +86,14 @@ public:
     return CGRect(translatePoint(relativeRect.origin), relativeRect.size);
   }
 
+protected:
+  // Creates a new instance of `CGDrawingContext`.
+  CGDrawingContext(CGRect frame);
+
 private:
   CGRect _frame;
 
-  TFT_eSPI *_canvas;
+  TFT_eSPI *_drawable;
 
   // Equals true if the origin of this context is (0, 0).
   bool _zeroTranslation;
