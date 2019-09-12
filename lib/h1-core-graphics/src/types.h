@@ -2,9 +2,9 @@
 
 #include <Arduino.h>
 
-// Define the unit type of 2D system.
+// Define the pixel type of 2D system.
 // Normally it's `int16_t`.
-typedef int16_t cg_unit_t;
+typedef int16_t cg_px_t;
 
 // Define the color type.
 // Normally it's 16 bit.

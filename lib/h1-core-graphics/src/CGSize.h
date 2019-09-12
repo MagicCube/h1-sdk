@@ -7,14 +7,14 @@
 // A struct contains width and height values.
 struct CGSize {
   // The width value of the size.
-  cg_unit_t width = 0;
+  cg_px_t width = 0;
 
   // The height value of the size.
-  cg_unit_t height = 0;
+  cg_px_t height = 0;
 
 
   // Creates a new `CGSize` with given `width` and `height`.
-  CGSize(cg_unit_t p_width = 0, cg_unit_t p_height = 0) {
+  CGSize(cg_px_t p_width = 0, cg_px_t p_height = 0) {
     width = p_width;
     height = p_height;
   }

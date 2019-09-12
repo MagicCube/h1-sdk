@@ -7,13 +7,13 @@
 // A struct represents a 2D point.
 struct CGPoint {
   // The x-coordinate of the point.
-  cg_unit_t x = 0;
+  cg_px_t x = 0;
 
   // The y-coordinate of the point.
-  cg_unit_t y = 0;
+  cg_px_t y = 0;
 
   // Creates a new `CGPoint` with given `x` and `y`.
-  CGPoint(cg_unit_t p_x = 0, cg_unit_t p_y = 0) {
+  CGPoint(cg_px_t p_x = 0, cg_px_t p_y = 0) {
     x = p_x;
     y = p_y;
   }
