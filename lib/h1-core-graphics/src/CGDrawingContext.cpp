@@ -6,8 +6,9 @@ CGDrawingContext::CGDrawingContext(CGRect frame, bool inMemory) {
   _inMemory = inMemory;
 }
 
-CGDrawingContext::CGDrawingContext(TFT_eSPI *tft, CGRect frame, bool inMemory) : CGDrawingContext(frame, inMemory) {
-  _drawable = tft;
+CGDrawingContext::CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory)
+    : CGDrawingContext(frame, inMemory) {
+  _drawable = drawable;
 }
 
 CGRect CGDrawingContext::frame() {
