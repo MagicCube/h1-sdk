@@ -9,6 +9,12 @@
 
 // A struct represents a rectangle.
 struct CGRect {
+  // The origin of the rectangle.
+  CGPoint origin;
+
+  // The size of the rectangle.
+  CGSize size;
+
   // Creates a new `CGRect` with given `x`, `y`, `width` and `height`.
   CGRect(cg_unit_t p_x = 0, cg_unit_t p_y = 0, cg_unit_t p_width = 0, cg_unit_t p_height = 0) {
     origin = CGPoint(p_x, p_y);
@@ -33,11 +39,10 @@ struct CGRect {
     size = p_size;
   }
 
-  // The origin of the rectangle.
-  CGPoint origin;
-
-  // The size of the rectangle.
-  CGSize size;
+  // Returns true if the given rectangle is as same as this rectangle.
+  bool equals(CGRect value) {
+    return value.origin.equals(origin) && value.size.equals(size);
+  }
 };
 
 // The rectangle whose width and height are both 0.
