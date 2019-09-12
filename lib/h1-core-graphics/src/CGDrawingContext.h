@@ -16,7 +16,7 @@
 class CGDrawingContext {
 public:
   // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(TFT_eSPI *tft, CGRect frame);
+  CGDrawingContext(TFT_eSPI *tft, CGRect frame, bool inMemory);
 
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
@@ -88,13 +88,16 @@ public:
 
 protected:
   // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(CGRect frame);
+  CGDrawingContext(CGRect frame, bool inMemory);
 
 private:
   CGRect _frame;
 
-  // Equals true if the origin of this context is (0, 0).
+  // True if the origin of this context is (0, 0).
   bool _zeroTranslation;
+
+  // True if the context is a sprite.
+  bool _inMemory;
 
   TFT_eSPI *_drawable;
 };

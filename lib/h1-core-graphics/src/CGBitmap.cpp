@@ -25,7 +25,7 @@ CGColorDepth CGBitmap::colorDepth() {
 }
 
 CGDrawingContext *CGBitmap::createDrawingContext() {
-  CGDrawingContext *drawingContext = new CGDrawingContext(_sprite, CGRect(CGPointZero, _size));
+  CGDrawingContext *drawingContext = new CGDrawingContext(_sprite, CGRect(CGPointZero, _size), true);
   return drawingContext;
 }
 

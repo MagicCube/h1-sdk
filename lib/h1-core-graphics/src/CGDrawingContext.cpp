@@ -1,11 +1,12 @@
 #include "CGDrawingContext.h"
 
-CGDrawingContext::CGDrawingContext(CGRect frame) {
+CGDrawingContext::CGDrawingContext(CGRect frame, bool inMemory) {
   _frame = frame;
   _zeroTranslation = _frame.equals(CGRectZero);
+  _inMemory = inMemory;
 }
 
-CGDrawingContext::CGDrawingContext(TFT_eSPI *tft, CGRect frame) : CGDrawingContext(frame) {
+CGDrawingContext::CGDrawingContext(TFT_eSPI *tft, CGRect frame, bool inMemory) : CGDrawingContext(frame, inMemory) {
   _drawable = tft;
 }
 
@@ -56,7 +57,11 @@ void CGDrawingContext::drawString(String string, CGPoint position) {
 }
 
 void CGDrawingContext::fill(cg_color_t color) {
-  _drawable->fillScreen(color);
+  if (_inMemory) {
+    ((TFT_eSprite *)_drawable)->fillSprite(color);
+  } else {
+    _drawable->fillScreen(color);
+  }
 }
 
 void CGDrawingContext::fillRect(CGRect rect, cg_color_t color) {
