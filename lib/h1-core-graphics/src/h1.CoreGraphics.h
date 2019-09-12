@@ -1,3 +1,5 @@
+#pragma once
+
 #include "colors.h"
 #include "types.h"
 
