@@ -39,6 +39,11 @@ struct CGRect {
     size = p_size;
   }
 
+  // Returns a new `CGPoint` which represents the center of the rectangle.
+  CGPoint center() {
+    return CGPoint(origin.x + size.width / 2, origin.y + size.height / 2);
+  }
+
   // Returns true if the given rectangle is as same as this rectangle.
   bool equals(CGRect value) {
     return value.origin.equals(origin) && value.size.equals(size);
