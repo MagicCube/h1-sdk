@@ -4,6 +4,14 @@ CGDisplayClass::CGDisplayClass() {
   _nativeTFT = new TFT_eSPI();
 }
 
+CGRect CGDisplayClass::bounds() {
+  return _bounds;
+}
+
+CGSize CGDisplayClass::size() {
+  return _bounds.size;
+}
+
 TFT_eSPI *CGDisplayClass::nativeTFT() {
   return _nativeTFT;
 }
