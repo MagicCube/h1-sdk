@@ -45,37 +45,37 @@ public:
   void fontFamily(CGFontFamily value);
 
   // Gets current font size.
-  cg_font_size_t fontSize();
+  uint8_t fontSize();
 
   // Sets current font size.
-  void fontSize(cg_font_size_t value);
+  void fontSize(uint8_t value);
 
   // Gets current text color.
-  cg_color_t textColor();
+  CGColor textColor();
 
   // Sets current text color.
-  void textColor(cg_color_t value);
+  void textColor(CGColor value);
 
   // Draws a pixel at given point.
-  void drawPixel(CGPoint point, cg_color_t color);
+  void drawPixel(CGPoint point, CGColor color);
 
   // Draws a line connecting 2 given points.
-  void drawLine(CGPoint p1, CGPoint p2, cg_color_t color);
+  void drawLine(CGPoint p1, CGPoint p2, CGColor color);
 
   // Draws a vertical line from origin with given length.
-  void drawFastVLine(CGPoint origin, CGInt height, cg_color_t color);
+  void drawFastVLine(CGPoint origin, CGInt height, CGColor color);
 
   // Draws a horizontal line from origin with given length.
-  void drawFastHLine(CGPoint origin, CGInt width, cg_color_t color);
+  void drawFastHLine(CGPoint origin, CGInt width, CGColor color);
 
   // Draws the specific rectangle.
-  void drawRect(CGRect rect, cg_color_t color);
+  void drawRect(CGRect rect, CGColor color);
 
   // Draws the specific round rectangle.
-  void drawRoundRect(CGRect rect, CGInt roundness, cg_color_t color);
+  void drawRoundRect(CGRect rect, CGInt roundness, CGColor color);
 
   // Draws the specific circle.
-  void drawCircle(CGPoint center, CGInt radius, cg_color_t color);
+  void drawCircle(CGPoint center, CGInt radius, CGColor color);
 
   // Draws text at given position.
   // You can specify font and color by `font(v)`, `fontSize(v)` and
@@ -83,16 +83,16 @@ public:
   void drawString(String string, CGPoint position);
 
   // Fills the contextual canvas with given color.
-  void fill(cg_color_t color);
+  void fill(CGColor color);
 
   // Fills the specific rectangle;
-  void fillRect(CGRect rect, cg_color_t color);
+  void fillRect(CGRect rect, CGColor color);
 
   // Fills the specific round rectangle;
-  void fillRoundRect(CGRect rect, CGInt roundness, cg_color_t color);
+  void fillRoundRect(CGRect rect, CGInt roundness, CGColor color);
 
   // Fills the specific circle;
-  void fillCircle(CGPoint center, CGInt radius, cg_color_t color);
+  void fillCircle(CGPoint center, CGInt radius, CGColor color);
 
   // Converts a local x-coordinate value to absolute.
   CGInt convertToAbsoluteY(CGInt relativeX) {
@@ -133,9 +133,9 @@ private:
   // True if the context is a sprite.
   bool _inMemory;
 
-  cg_color_t _textColor = CG_COLOR_WHITE;
+  CGColor _textColor = CGCOLOR_WHITE;
   CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
-  cg_font_size_t _fontSize = 1;
+  uint8_t _fontSize = 1;
 
   TFT_eSPI *_drawable;
 };

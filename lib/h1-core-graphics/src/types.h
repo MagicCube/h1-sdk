@@ -8,10 +8,7 @@ typedef int16_t CGInt;
 
 // Define the color type.
 // Normally it's 16 bit.
-typedef uint16_t cg_color_t;
-
-// Define the font size.
-typedef uint8_t cg_font_size_t;
+typedef uint16_t CGColor;
 
 // Specify font family.
 enum class CGFontFamily {
