@@ -63,19 +63,19 @@ public:
   void drawLine(CGPoint p1, CGPoint p2, cg_color_t color);
 
   // Draws a vertical line from origin with given length.
-  void drawFastVLine(CGPoint origin, cg_px_t height, cg_color_t color);
+  void drawFastVLine(CGPoint origin, CGInt height, cg_color_t color);
 
   // Draws a horizontal line from origin with given length.
-  void drawFastHLine(CGPoint origin, cg_px_t width, cg_color_t color);
+  void drawFastHLine(CGPoint origin, CGInt width, cg_color_t color);
 
   // Draws the specific rectangle.
   void drawRect(CGRect rect, cg_color_t color);
 
   // Draws the specific round rectangle.
-  void drawRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color);
+  void drawRoundRect(CGRect rect, CGInt roundness, cg_color_t color);
 
   // Draws the specific circle.
-  void drawCircle(CGPoint center, cg_px_t radius, cg_color_t color);
+  void drawCircle(CGPoint center, CGInt radius, cg_color_t color);
 
   // Draws text at given position.
   // You can specify font and color by `font(v)`, `fontSize(v)` and
@@ -89,18 +89,18 @@ public:
   void fillRect(CGRect rect, cg_color_t color);
 
   // Fills the specific round rectangle;
-  void fillRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color);
+  void fillRoundRect(CGRect rect, CGInt roundness, cg_color_t color);
 
   // Fills the specific circle;
-  void fillCircle(CGPoint center, cg_px_t radius, cg_color_t color);
+  void fillCircle(CGPoint center, CGInt radius, cg_color_t color);
 
   // Converts a local x-coordinate value to absolute.
-  cg_px_t convertToAbsoluteY(cg_px_t relativeX) {
+  CGInt convertToAbsoluteY(CGInt relativeX) {
     return _frame.origin.x + relativeX;
   }
 
   // Converts a local y-coordinate value to absolute.
-  cg_px_t convertToAbsoluteX(cg_px_t relativeY) {
+  CGInt convertToAbsoluteX(CGInt relativeY) {
     return _frame.origin.y + relativeY;
   }
 

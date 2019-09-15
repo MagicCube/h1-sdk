@@ -58,12 +58,12 @@ void CGDrawingContext::drawLine(CGPoint p1, CGPoint p2, cg_color_t color) {
   _drawable->drawLine(absP1.x, absP1.y, absP2.x, absP2.y, color);
 }
 
-void CGDrawingContext::drawFastVLine(CGPoint origin, cg_px_t height, cg_color_t color) {
+void CGDrawingContext::drawFastVLine(CGPoint origin, CGInt height, cg_color_t color) {
   auto absOrigin = convertToAbsolute(origin);
   _drawable->drawFastVLine(absOrigin.x, absOrigin.y, height, color);
 }
 
-void CGDrawingContext::drawFastHLine(CGPoint origin, cg_px_t width, cg_color_t color) {
+void CGDrawingContext::drawFastHLine(CGPoint origin, CGInt width, cg_color_t color) {
   auto absOrigin = convertToAbsolute(origin);
   _drawable->drawFastHLine(absOrigin.x, absOrigin.y, width, color);
 }
@@ -73,13 +73,13 @@ void CGDrawingContext::drawRect(CGRect rect, cg_color_t color) {
   _drawable->drawRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
-void CGDrawingContext::drawRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color) {
+void CGDrawingContext::drawRoundRect(CGRect rect, CGInt roundness, cg_color_t color) {
   auto absRect = convertToAbsolute(rect);
   _drawable->drawRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
                            color);
 }
 
-void CGDrawingContext::drawCircle(CGPoint center, cg_px_t radius, cg_color_t color) {
+void CGDrawingContext::drawCircle(CGPoint center, CGInt radius, cg_color_t color) {
   auto absCenter = convertToAbsolute(center);
   _drawable->drawCircle(absCenter.x, absCenter.y, radius, color);
 }
@@ -102,13 +102,13 @@ void CGDrawingContext::fillRect(CGRect rect, cg_color_t color) {
   _drawable->fillRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
-void CGDrawingContext::fillRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color) {
+void CGDrawingContext::fillRoundRect(CGRect rect, CGInt roundness, cg_color_t color) {
   auto absRect = convertToAbsolute(rect);
   _drawable->fillRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
                            color);
 }
 
-void CGDrawingContext::fillCircle(CGPoint center, cg_px_t radius, cg_color_t color) {
+void CGDrawingContext::fillCircle(CGPoint center, CGInt radius, cg_color_t color) {
   auto absCenter = convertToAbsolute(center);
   _drawable->fillCircle(absCenter.x, absCenter.y, radius, color);
 }

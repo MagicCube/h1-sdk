@@ -4,7 +4,7 @@
 
 // Define the pixel type of 2D system.
 // Normally it's `int16_t`.
-typedef int16_t cg_px_t;
+typedef int16_t CGInt;
 
 // Define the color type.
 // Normally it's 16 bit.
