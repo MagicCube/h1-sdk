@@ -4,6 +4,7 @@
 #include "types.h"
 
 #include "CGBitmap.h"
+#include "CGDisplay.h"
 #include "CGDrawingContext.h"
 #include "CGPoint.h"
 #include "CGRect.h"

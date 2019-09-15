@@ -2,8 +2,6 @@
 
 #include <Arduino.h>
 
-#include <TFT_eSPI.h>
-
 #include "CGDrawingContext.h"
 #include "CGSize.h"
 #include "types.h"
@@ -14,9 +12,12 @@ public:
   // Creates a new instance of `CGBitmap`.
   // It will also allocate memory automatically, so you don't have to manually
   // invoke `alloc()`.
-  CGBitmap(TFT_eSPI *tft, CGSize size, CGColorDepth colorDepth = CGColorDepth::MONO_1_BIT);
+  CGBitmap(CGSize size, CGColorDepth colorDepth);
 
   ~CGBitmap();
+
+  // Gets the bounds of the bitmap.
+  CGRect bounds();
 
   // Gets the size of the bitmap.
   CGSize size();
@@ -34,12 +35,8 @@ public:
   // The returned `CGDrawingContext` has already been allocated.
   CGDrawingContext *createDrawingContext();
 
-protected:
-  // Creates a new instance of `CGBitmap`.
-  CGBitmap(CGSize size, CGColorDepth colorDepth = CGColorDepth::MONO_1_BIT);
-
 private:
-  CGSize _size;
+  CGRect _bounds;
   CGColorDepth _colorDepth;
   TFT_eSprite *_sprite;
 };

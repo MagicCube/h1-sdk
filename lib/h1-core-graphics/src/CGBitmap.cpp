@@ -1,12 +1,12 @@
 #include "CGBitmap.h"
 
-CGBitmap::CGBitmap(CGSize size, CGColorDepth colorDepth) {
-  _size = size;
-  _colorDepth = colorDepth;
-}
+#include "CGDisplay.h"
 
-CGBitmap::CGBitmap(TFT_eSPI *tft, CGSize size, CGColorDepth colorDepth) : CGBitmap(size, colorDepth) {
-  _sprite = new TFT_eSprite(tft);
+CGBitmap::CGBitmap(CGSize size, CGColorDepth colorDepth) {
+  _bounds = CGRect(CGPointZero, size);
+  _colorDepth = colorDepth;
+
+  _sprite = new TFT_eSprite(CGDisplay.nativeTFT());
   _sprite->setColorDepth((int8_t)_colorDepth);
   alloc();
 }
@@ -16,8 +16,12 @@ CGBitmap::~CGBitmap() {
   delete _sprite;
 }
 
+CGRect CGBitmap::bounds() {
+  return _bounds;
+}
+
 CGSize CGBitmap::size() {
-  return _size;
+  return _bounds.size;
 }
 
 CGColorDepth CGBitmap::colorDepth() {
@@ -25,12 +29,12 @@ CGColorDepth CGBitmap::colorDepth() {
 }
 
 CGDrawingContext *CGBitmap::createDrawingContext() {
-  CGDrawingContext *drawingContext = new CGDrawingContext(_sprite, _size, true);
+  CGDrawingContext *drawingContext = new CGDrawingContext(_sprite, size(), true);
   return drawingContext;
 }
 
 void CGBitmap::alloc() {
-  _sprite->createSprite(_size.width, _size.height);
+  _sprite->createSprite(size().width, size().height);
 }
 
 void CGBitmap::free() {
