@@ -1,19 +1,19 @@
 #include <Arduino.h>
-#include <SPI.h>
-
-#define DEBUG
 
 #include <h1.CoreFoundation.h>
 #include <h1.CoreGraphics.h>
 #include <h1.UI.h>
 
+TFT_eSPI tft;
+CGDrawingContext context(&tft, CGRect(CGPointZero, TFT_WIDTH, TFT_HEIGHT), false);
+
 void setup() {
   Serial.begin(115200);
+  tft.begin();
+  context.fill(CG_COLOR_BLACK);
+  context.drawRect(context.frame(), CG_COLOR_WHITE);
+  context.drawRect(context.frame().pad(10, 20, 30, 40), CG_COLOR_WHITE);
 }
 
 void loop() {
-  auto rect = CGRectZero;
-  String name = "Rect";
-  LOG_D("%s (%d, %d, %d, %d)", name.c_str(), rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-  delay(1000);
 }

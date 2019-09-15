@@ -22,6 +22,11 @@ struct CGPoint {
   bool equals(CGPoint value) {
     return value.x == x && value.y == y;
   }
+
+  // Returns a new `CGPoint` which displace given distance from thie current point.
+  CGPoint translateBy(cg_px_t offsetX, cg_px_t offsetY) {
+    return CGPoint(x + offsetX, y + offsetY);
+  }
 };
 
 // The point whose location is (0, 0).

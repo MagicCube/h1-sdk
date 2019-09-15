@@ -23,6 +23,11 @@ struct CGSize {
   bool equals(CGSize value) {
     return value.width == width && value.height == height;
   }
+
+  // Returns a new `CGSize`.
+  CGSize scaleBy(cg_px_t xOffset, cg_px_t yOffset) {
+    return CGSize(width + xOffset, height + yOffset);
+  }
 };
 
 // The size whose width and height are both 0.

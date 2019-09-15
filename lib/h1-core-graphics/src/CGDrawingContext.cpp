@@ -2,13 +2,17 @@
 
 CGDrawingContext::CGDrawingContext(CGRect frame, bool inMemory) {
   _frame = frame;
-  _zeroTranslation = _frame.equals(CGRectZero);
+  _zeroTranslation = _frame.origin.equals(CGPointZero);
   _inMemory = inMemory;
 }
 
 CGDrawingContext::CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory)
     : CGDrawingContext(frame, inMemory) {
   _drawable = drawable;
+}
+
+CGDrawingContext::CGDrawingContext(TFT_eSPI *drawable, CGSize size, bool inMemory)
+    : CGDrawingContext(drawable, CGRect(CGPointZero, size), inMemory) {
 }
 
 CGRect CGDrawingContext::frame() {
@@ -44,44 +48,44 @@ void CGDrawingContext::textColor(cg_color_t value) {
 }
 
 void CGDrawingContext::drawPixel(CGPoint point, cg_color_t color) {
-  auto absPoint = translatePoint(point);
+  auto absPoint = convertToAbsolute(point);
   _drawable->drawPixel(absPoint.x, absPoint.y, color);
 }
 
 void CGDrawingContext::drawLine(CGPoint p1, CGPoint p2, cg_color_t color) {
-  auto absP1 = translatePoint(p1);
-  auto absP2 = translatePoint(p2);
+  auto absP1 = convertToAbsolute(p1);
+  auto absP2 = convertToAbsolute(p2);
   _drawable->drawLine(absP1.x, absP1.y, absP2.x, absP2.y, color);
 }
 
 void CGDrawingContext::drawFastVLine(CGPoint origin, cg_px_t height, cg_color_t color) {
-  auto absOrigin = translatePoint(origin);
+  auto absOrigin = convertToAbsolute(origin);
   _drawable->drawFastVLine(absOrigin.x, absOrigin.y, height, color);
 }
 
 void CGDrawingContext::drawFastHLine(CGPoint origin, cg_px_t width, cg_color_t color) {
-  auto absOrigin = translatePoint(origin);
+  auto absOrigin = convertToAbsolute(origin);
   _drawable->drawFastHLine(absOrigin.x, absOrigin.y, width, color);
 }
 
 void CGDrawingContext::drawRect(CGRect rect, cg_color_t color) {
-  auto absRect = translateRect(rect);
+  auto absRect = convertToAbsolute(rect);
   _drawable->drawRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
 void CGDrawingContext::drawRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color) {
-  auto absRect = translateRect(rect);
+  auto absRect = convertToAbsolute(rect);
   _drawable->drawRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
                            color);
 }
 
 void CGDrawingContext::drawCircle(CGPoint center, cg_px_t radius, cg_color_t color) {
-  auto absCenter = translatePoint(center);
+  auto absCenter = convertToAbsolute(center);
   _drawable->drawCircle(absCenter.x, absCenter.y, radius, color);
 }
 
 void CGDrawingContext::drawString(String string, CGPoint position) {
-  auto absPosition = translatePoint(position);
+  auto absPosition = convertToAbsolute(position);
   _drawable->drawString(string, absPosition.x, absPosition.y);
 }
 
@@ -94,17 +98,17 @@ void CGDrawingContext::fill(cg_color_t color) {
 }
 
 void CGDrawingContext::fillRect(CGRect rect, cg_color_t color) {
-  auto absRect = translateRect(rect);
+  auto absRect = convertToAbsolute(rect);
   _drawable->fillRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
 void CGDrawingContext::fillRoundRect(CGRect rect, cg_px_t roundness, cg_color_t color) {
-  auto absRect = translateRect(rect);
+  auto absRect = convertToAbsolute(rect);
   _drawable->fillRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
                            color);
 }
 
 void CGDrawingContext::fillCircle(CGPoint center, cg_px_t radius, cg_color_t color) {
-  auto absCenter = translatePoint(center);
+  auto absCenter = convertToAbsolute(center);
   _drawable->fillCircle(absCenter.x, absCenter.y, radius, color);
 }

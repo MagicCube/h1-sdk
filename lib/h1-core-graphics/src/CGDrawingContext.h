@@ -20,9 +20,23 @@ public:
   // The `drawable` could be a `TFT_eSPI` or `TFT_eSprite`.
   CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory);
 
+  // Creates a new instance of `CGDrawingContext`.
+  // The `drawable` could be a `TFT_eSPI` or `TFT_eSprite`.
+  CGDrawingContext(TFT_eSPI *drawable, CGSize size, bool inMemory);
+
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
   CGRect frame();
+
+  // Shortcuts for `frame().origin`.
+  CGPoint origin() {
+    return frame().origin;
+  }
+
+  // Shortcuts for `frame().size`.
+  CGSize size() {
+    return frame().size;
+  }
 
   // Gets current font family.
   CGFontFamily fontFamily();
@@ -80,30 +94,30 @@ public:
   // Fills the specific circle;
   void fillCircle(CGPoint center, cg_px_t radius, cg_color_t color);
 
-  // Translates a local x-coordinate value to absolute.
-  cg_px_t translateX(cg_px_t relativeX) {
+  // Converts a local x-coordinate value to absolute.
+  cg_px_t convertToAbsoluteY(cg_px_t relativeX) {
     return _frame.origin.x + relativeX;
   }
 
-  // Translates a local y-coordinate value to absolute.
-  cg_px_t translateY(cg_px_t relativeY) {
+  // Converts a local y-coordinate value to absolute.
+  cg_px_t convertToAbsoluteX(cg_px_t relativeY) {
     return _frame.origin.y + relativeY;
   }
 
-  // Translates a local coordinate point to absolute.
-  CGPoint translatePoint(CGPoint relativePoint) {
+  // Returns a new `CGPoint` which converted a local coordinate point to absolute.
+  CGPoint convertToAbsolute(CGPoint relativePoint) {
     if (_zeroTranslation) {
       return relativePoint;
     }
-    return CGPoint(translateX(_frame.origin.x), translateY(_frame.origin.y));
+    return CGPoint(convertToAbsoluteX(relativePoint.x), convertToAbsoluteY(relativePoint.y));
   }
 
-  // Translates a local coorinate rectangle to absolute.
-  CGRect translateRect(CGRect relativeRect) {
+  // Returns a new `CGRect` which converted a local coorinate rectangle to absolute.
+  CGRect convertToAbsolute(CGRect relativeRect) {
     if (_zeroTranslation) {
       return relativeRect;
     }
-    return CGRect(translatePoint(relativeRect.origin), relativeRect.size);
+    return CGRect(convertToAbsolute(relativeRect.origin), relativeRect.size);
   }
 
 protected:

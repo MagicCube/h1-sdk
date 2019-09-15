@@ -43,6 +43,38 @@ struct CGRect {
   bool equals(CGRect value) {
     return value.origin.equals(origin) && value.size.equals(size);
   }
+
+  CGRect translateBy(cg_px_t offsetX, cg_px_t offsetY) {
+    return CGRect(origin.translateBy(offsetX, offsetY), size);
+  }
+
+  CGRect scaleBy(cg_px_t offsetX, cg_px_t offsetY) {
+    return CGRect(origin, size.scaleBy(offsetX, offsetY));
+  }
+
+  CGRect margin(cg_px_t up, cg_px_t right, cg_px_t down, cg_px_t left) {
+    return CGRect(origin.translateBy(-left, -up), size.scaleBy(left + right, up + down));
+  }
+
+  CGRect margin(cg_px_t marginX, cg_px_t marginY) {
+    return margin(marginY, marginX, marginY, marginX);
+  }
+
+  CGRect margin(cg_px_t marginXY) {
+    return margin(marginXY, marginXY);
+  }
+
+  CGRect pad(cg_px_t up, cg_px_t right, cg_px_t down, cg_px_t left) {
+    return CGRect(origin.translateBy(left, up), size.scaleBy(-(left + right), -(up + down)));
+  }
+
+  CGRect pad(cg_px_t paddingX, cg_px_t paddingY) {
+    return pad(paddingY, paddingX, paddingY, paddingX);
+  }
+
+  CGRect pad(cg_px_t paddingXY) {
+    return pad(paddingXY, paddingXY);
+  }
 };
 
 // The rectangle whose width and height are both 0.
