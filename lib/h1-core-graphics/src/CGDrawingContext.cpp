@@ -6,13 +6,13 @@ CGDrawingContext::CGDrawingContext(CGRect frame, bool inMemory) {
   _inMemory = inMemory;
 }
 
-CGDrawingContext::CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory)
+CGDrawingContext::CGDrawingContext(TFT_eSPI *nativeTFT, CGRect frame, bool inMemory)
     : CGDrawingContext(frame, inMemory) {
-  _drawable = drawable;
+  _nativeTFT = nativeTFT;
 }
 
-CGDrawingContext::CGDrawingContext(TFT_eSPI *drawable, CGSize size, bool inMemory)
-    : CGDrawingContext(drawable, CGRect(CGPointZero, size), inMemory) {
+CGDrawingContext::CGDrawingContext(TFT_eSPI *nativeTFT, CGSize size, bool inMemory)
+    : CGDrawingContext(nativeTFT, CGRect(CGPointZero, size), inMemory) {
 }
 
 CGRect CGDrawingContext::frame() {
@@ -27,7 +27,7 @@ void CGDrawingContext::fontFamily(CGFontFamily value) {
   _fontFamily = value;
   uint8_t _fontFamilyValue = (uint8_t)_fontFamily;
   if (_fontFamilyValue > 100 && _fontFamilyValue < 110) {
-    _drawable->setTextFont(_fontFamilyValue - 100);
+    _nativeTFT->setTextFont(_fontFamilyValue - 100);
   }
 }
 
@@ -49,66 +49,66 @@ void CGDrawingContext::textColor(CGColor value) {
 
 void CGDrawingContext::drawPixel(CGPoint point, CGColor color) {
   auto absPoint = convertToAbsolute(point);
-  _drawable->drawPixel(absPoint.x, absPoint.y, color);
+  _nativeTFT->drawPixel(absPoint.x, absPoint.y, color);
 }
 
 void CGDrawingContext::drawLine(CGPoint p1, CGPoint p2, CGColor color) {
   auto absP1 = convertToAbsolute(p1);
   auto absP2 = convertToAbsolute(p2);
-  _drawable->drawLine(absP1.x, absP1.y, absP2.x, absP2.y, color);
+  _nativeTFT->drawLine(absP1.x, absP1.y, absP2.x, absP2.y, color);
 }
 
 void CGDrawingContext::drawFastVLine(CGPoint origin, CGInt height, CGColor color) {
   auto absOrigin = convertToAbsolute(origin);
-  _drawable->drawFastVLine(absOrigin.x, absOrigin.y, height, color);
+  _nativeTFT->drawFastVLine(absOrigin.x, absOrigin.y, height, color);
 }
 
 void CGDrawingContext::drawFastHLine(CGPoint origin, CGInt width, CGColor color) {
   auto absOrigin = convertToAbsolute(origin);
-  _drawable->drawFastHLine(absOrigin.x, absOrigin.y, width, color);
+  _nativeTFT->drawFastHLine(absOrigin.x, absOrigin.y, width, color);
 }
 
 void CGDrawingContext::drawRect(CGRect rect, CGColor color) {
   auto absRect = convertToAbsolute(rect);
-  _drawable->drawRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
+  _nativeTFT->drawRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
 void CGDrawingContext::drawRoundRect(CGRect rect, CGInt roundness, CGColor color) {
   auto absRect = convertToAbsolute(rect);
-  _drawable->drawRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
-                           color);
+  _nativeTFT->drawRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
+                            color);
 }
 
 void CGDrawingContext::drawCircle(CGPoint center, CGInt radius, CGColor color) {
   auto absCenter = convertToAbsolute(center);
-  _drawable->drawCircle(absCenter.x, absCenter.y, radius, color);
+  _nativeTFT->drawCircle(absCenter.x, absCenter.y, radius, color);
 }
 
 void CGDrawingContext::drawString(String string, CGPoint position) {
   auto absPosition = convertToAbsolute(position);
-  _drawable->drawString(string, absPosition.x, absPosition.y);
+  _nativeTFT->drawString(string, absPosition.x, absPosition.y);
 }
 
 void CGDrawingContext::fill(CGColor color) {
   if (_inMemory) {
-    ((TFT_eSprite *)_drawable)->fillSprite(color);
+    ((TFT_eSprite *)_nativeTFT)->fillSprite(color);
   } else {
-    _drawable->fillScreen(color);
+    _nativeTFT->fillScreen(color);
   }
 }
 
 void CGDrawingContext::fillRect(CGRect rect, CGColor color) {
   auto absRect = convertToAbsolute(rect);
-  _drawable->fillRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
+  _nativeTFT->fillRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, color);
 }
 
 void CGDrawingContext::fillRoundRect(CGRect rect, CGInt roundness, CGColor color) {
   auto absRect = convertToAbsolute(rect);
-  _drawable->fillRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
-                           color);
+  _nativeTFT->fillRoundRect(absRect.origin.x, absRect.origin.y, absRect.size.width, absRect.size.height, roundness,
+                            color);
 }
 
 void CGDrawingContext::fillCircle(CGPoint center, CGInt radius, CGColor color) {
   auto absCenter = convertToAbsolute(center);
-  _drawable->fillCircle(absCenter.x, absCenter.y, radius, color);
+  _nativeTFT->fillCircle(absCenter.x, absCenter.y, radius, color);
 }

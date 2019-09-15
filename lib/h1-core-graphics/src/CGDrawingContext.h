@@ -17,12 +17,12 @@
 class CGDrawingContext {
 public:
   // Creates a new instance of `CGDrawingContext`.
-  // The `drawable` could be a `TFT_eSPI` or `TFT_eSprite`.
-  CGDrawingContext(TFT_eSPI *drawable, CGRect frame, bool inMemory);
+  // The `nativeTFT` could be a `TFT_eSPI` or `TFT_eSprite`.
+  CGDrawingContext(TFT_eSPI *nativeTFT, CGRect frame, bool inMemory);
 
   // Creates a new instance of `CGDrawingContext`.
-  // The `drawable` could be a `TFT_eSPI` or `TFT_eSprite`.
-  CGDrawingContext(TFT_eSPI *drawable, CGSize size, bool inMemory);
+  // The `nativeTFT` could be a `TFT_eSPI` or `TFT_eSprite`.
+  CGDrawingContext(TFT_eSPI *nativeTFT, CGSize size, bool inMemory);
 
   // Gets a `CGRect` represents origin and size of the contextual canvas in
   // absolute coordinate.
@@ -137,5 +137,5 @@ private:
   CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
   uint8_t _fontSize = 1;
 
-  TFT_eSPI *_drawable;
+  TFT_eSPI *_nativeTFT;
 };
