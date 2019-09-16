@@ -12,6 +12,10 @@ TFTDisplay *TFTDisplay::instance() {
   return __instance;
 }
 
+void TFTDisplay::rotation(uint8_t rotation) {
+  _nativeDisplay->setRotation(rotation);
+}
+
 CGFontFamily TFTDisplay::fontFamily() {
   return _fontFamily;
 }

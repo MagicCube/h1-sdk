@@ -13,6 +13,7 @@ int8_t direction = 1;
 
 void setup() {
   Serial.begin(115200);
+  UIScreen.rotation(3);
   UIScreen.begin();
 
   screenContext = UIScreen.createDrawingContext();

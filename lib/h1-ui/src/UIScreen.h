@@ -16,6 +16,9 @@ public:
   // Gets a `CGDisplay` which represents the display of the screen.
   CGDisplay *display();
 
+  // Sets the rotation of the screen.
+  void rotation(uint8_t rotation);
+
   // Gets the bounds of the screen.
   CGRect frame();
 

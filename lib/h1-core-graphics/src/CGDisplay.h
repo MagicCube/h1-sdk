@@ -11,6 +11,9 @@ public:
   // Initializes the `CGDisplay`.
   virtual void begin() = 0;
 
+  // Set rotation of the display.
+  virtual void rotation(uint8_t rotation) = 0;
+
   // Creates a new `CGDrawingContext` for the display.
   CGDrawingContext *createDrawingContext(CGRect specificFrame = CGRectZero) {
     if (specificFrame.equals(CGRectZero)) {

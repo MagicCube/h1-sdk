@@ -37,6 +37,8 @@ public:
     return _bounds.size;
   }
 
+  void rotation(uint8_t rotation) override;
+
   CGFontFamily fontFamily() override;
 
   void fontFamily(CGFontFamily value) override;
