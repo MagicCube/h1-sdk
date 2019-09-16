@@ -16,7 +16,9 @@ public:
   static TFTDisplay *instance();
 
   // Gets the native `TFT_eSPI` of the display.
-  TFT_eSPI *nativeTFT();
+  TFT_eSPI *nativeTFT() {
+    return _nativeDisplay;
+  }
 
   CGRect bounds() override {
     return _bounds;

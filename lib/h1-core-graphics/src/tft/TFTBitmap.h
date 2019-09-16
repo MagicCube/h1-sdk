@@ -12,7 +12,7 @@ public:
   // Creates a new instance of `TFTBitmap`.
   TFTBitmap(CGSize size, CGColorDepth colorDepth);
 
-  ~TFTBitmap() override;
+  ~TFTBitmap();
 
   CGRect bounds() override {
     return _bounds;
@@ -28,6 +28,10 @@ public:
 
   CGSize size() override {
     return _bounds.size;
+  }
+
+  CGColorDepth colorDepth() override {
+    return _colorDepth;
   }
 
   CGFontFamily fontFamily() override;

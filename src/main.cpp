@@ -4,6 +4,7 @@
 #include <h1.CoreGraphics.h>
 #include <h1.UI.h>
 
+TFTBitmap bitmap(UIScreen.size(), CGColorDepth::MONO_1_BIT);
 CGDrawingContext context(UIScreen.display());
 
 uint8_t radius = 0;

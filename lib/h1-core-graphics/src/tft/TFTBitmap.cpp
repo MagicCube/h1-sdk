@@ -2,7 +2,7 @@
 
 #include "TFTDisplay.h"
 
-TFTBitmap::TFTBitmap(CGSize size, CGColorDepth colorDepth) : CGBitmap(size, colorDepth) {
+TFTBitmap::TFTBitmap(CGSize size, CGColorDepth colorDepth) : CGBitmap() {
   _bounds = CGRect(CGPointZero, size);
   _colorDepth = colorDepth;
 

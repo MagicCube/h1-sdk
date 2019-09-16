@@ -8,11 +8,6 @@
 // An abstract class represents a bitmap.
 class CGBitmap : CGCanvas {
 public:
-  // Creates a new instance of `CGBitmap`.
-  CGBitmap(CGSize size, CGColorDepth colorDepth);
-
-  virtual ~CGBitmap();
-
   // Gets the color depth of the bitmap
   virtual CGColorDepth colorDepth() = 0;
 
