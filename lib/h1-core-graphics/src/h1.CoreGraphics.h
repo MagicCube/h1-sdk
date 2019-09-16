@@ -12,5 +12,5 @@
 #include "CGRect.h"
 #include "CGSize.h"
 
-#include "tft/TFTBitmap.h"
-#include "tft/TFTDisplay.h"
+#include "TFTBitmap.h"
+#include "TFTDisplay.h"

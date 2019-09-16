@@ -4,7 +4,7 @@
 
 #include <TFT_eSPI.h>
 
-#include "../CGBitmap.h"
+#include "CGBitmap.h"
 
 // A class represents TFT bitmap.
 class TFTBitmap : public CGBitmap {

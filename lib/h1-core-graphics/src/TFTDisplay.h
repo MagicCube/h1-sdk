@@ -4,8 +4,8 @@
 
 #include <TFT_eSPI.h>
 
-#include "../CGBitmap.h"
-#include "../CGDisplay.h"
+#include "CGBitmap.h"
+#include "CGDisplay.h"
 
 // A class represents the TFT display.
 class TFTDisplay : public CGDisplay {

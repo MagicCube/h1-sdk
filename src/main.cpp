@@ -23,7 +23,7 @@ void setup() {
 void loop() {
   bitmapContext->fill(CGCOLOR_BLACK);
   bitmapContext->fillCircle(bitmapContext->frame().center(), radius, CGCOLOR_WHITE);
-  radius += direction * 4;
+  radius += direction * 6;
   if (radius >= bitmapContext->size().width / 2) {
     direction = -1;
   } else if (radius <= 0) {
