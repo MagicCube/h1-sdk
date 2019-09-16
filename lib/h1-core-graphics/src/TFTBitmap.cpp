@@ -22,8 +22,51 @@ CGFontFamily TFTBitmap::fontFamily() {
 void TFTBitmap::fontFamily(CGFontFamily value) {
   _fontFamily = value;
   uint8_t _fontFamilyValue = (uint8_t)_fontFamily;
-  if (_fontFamilyValue > 100 && _fontFamilyValue < 110) {
-    _nativeSprite->setTextFont(_fontFamilyValue - 100);
+  if (_fontFamilyValue < 10) {
+    // Basic font
+    _nativeSprite->setFreeFont(nullptr);
+    _nativeSprite->setTextFont(_fontFamilyValue);
+  } else if (_fontFamilyValue < 60) {
+    switch (value) {
+    case CGFontFamily::FREE_MONO_9PT:
+      _nativeSprite->setFreeFont(&FreeMono9pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_12PT:
+      _nativeSprite->setFreeFont(&FreeMono12pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_18PT:
+      _nativeSprite->setFreeFont(&FreeMono18pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_24PT:
+      _nativeSprite->setFreeFont(&FreeMono24pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_9PT:
+      _nativeSprite->setFreeFont(&FreeSans9pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_12PT:
+      _nativeSprite->setFreeFont(&FreeSans12pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_18PT:
+      _nativeSprite->setFreeFont(&FreeSans18pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_24PT:
+      _nativeSprite->setFreeFont(&FreeSans24pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_9PT:
+      _nativeSprite->setFreeFont(&FreeSerif9pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_12PT:
+      _nativeSprite->setFreeFont(&FreeSerif12pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_18PT:
+      _nativeSprite->setFreeFont(&FreeSerif18pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_24PT:
+      _nativeSprite->setFreeFont(&FreeSerif24pt7b);
+      break;
+    default:
+      break;
+    }
   }
 }
 

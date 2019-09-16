@@ -23,8 +23,51 @@ CGFontFamily TFTDisplay::fontFamily() {
 void TFTDisplay::fontFamily(CGFontFamily value) {
   _fontFamily = value;
   uint8_t _fontFamilyValue = (uint8_t)_fontFamily;
-  if (_fontFamilyValue > 100 && _fontFamilyValue < 110) {
-    _nativeDisplay->setTextFont(_fontFamilyValue - 100);
+  if (_fontFamilyValue < 10) {
+    // Basic font
+    _nativeDisplay->setFreeFont(nullptr);
+    _nativeDisplay->setTextFont(_fontFamilyValue);
+  } else if (_fontFamilyValue < 60) {
+    switch (value) {
+    case CGFontFamily::FREE_MONO_9PT:
+      _nativeDisplay->setFreeFont(&FreeMono9pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_12PT:
+      _nativeDisplay->setFreeFont(&FreeMono12pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_18PT:
+      _nativeDisplay->setFreeFont(&FreeMono18pt7b);
+      break;
+    case CGFontFamily::FREE_MONO_24PT:
+      _nativeDisplay->setFreeFont(&FreeMono24pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_9PT:
+      _nativeDisplay->setFreeFont(&FreeSans9pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_12PT:
+      _nativeDisplay->setFreeFont(&FreeSans12pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_18PT:
+      _nativeDisplay->setFreeFont(&FreeSans18pt7b);
+      break;
+    case CGFontFamily::FREE_SANS_24PT:
+      _nativeDisplay->setFreeFont(&FreeSans24pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_9PT:
+      _nativeDisplay->setFreeFont(&FreeSerif9pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_12PT:
+      _nativeDisplay->setFreeFont(&FreeSerif12pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_18PT:
+      _nativeDisplay->setFreeFont(&FreeSerif18pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_24PT:
+      _nativeDisplay->setFreeFont(&FreeSerif24pt7b);
+      break;
+    default:
+      break;
+    }
   }
 }
 

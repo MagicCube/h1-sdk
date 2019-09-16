@@ -18,7 +18,7 @@ void setup() {
 
   screenContext = UIScreen.createDrawingContext();
   bitmapContext = bitmap.createDrawingContext();
-  bitmapContext->fontFamily(CGFontFamily::MEDIUM_26PX);
+  bitmapContext->fontFamily(CGFontFamily::FREE_SANS_18PT);
   bitmapContext->textColor(CGCOLOR_BLACK);
   bitmapContext->textAlign(CGTextAlign::CENTER);
   bitmapContext->textBaseline(CGTextBaseline::MIDDLE);
@@ -34,6 +34,6 @@ void loop() {
   } else if (radius <= 0) {
     direction = 1;
   }
-  bitmapContext->drawString("Hello", bitmapContext->frame().center());
+  bitmapContext->drawString("Hello, Henry", bitmapContext->frame().center());
   screenContext->drawBitmap(&bitmap, CGPointZero);
 }
