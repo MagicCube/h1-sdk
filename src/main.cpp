@@ -19,7 +19,7 @@ void setup() {
   screenContext = UIScreen.createDrawingContext();
   bitmapContext = bitmap.createDrawingContext();
   bitmapContext->fontFamily(CGFontFamily::FREE_SANS_18PT);
-  bitmapContext->textColor(CGCOLOR_BLACK);
+  bitmapContext->textColor(CGCOLOR_RED);
   bitmapContext->textAlign(CGTextAlign::CENTER);
   bitmapContext->textBaseline(CGTextBaseline::MIDDLE);
   screenContext->fill(CGCOLOR_BLACK);

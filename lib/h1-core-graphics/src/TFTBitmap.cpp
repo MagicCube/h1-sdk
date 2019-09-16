@@ -55,14 +55,26 @@ void TFTBitmap::fontFamily(CGFontFamily value) {
     case CGFontFamily::FREE_SERIF_9PT:
       _nativeSprite->setFreeFont(&FreeSerif9pt7b);
       break;
+    case CGFontFamily::FREE_SERIF_BOLD_9PT:
+      _nativeSprite->setFreeFont(&FreeSerifBold9pt7b);
+      break;
     case CGFontFamily::FREE_SERIF_12PT:
       _nativeSprite->setFreeFont(&FreeSerif12pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_BOLD_12PT:
+      _nativeSprite->setFreeFont(&FreeSerifBold12pt7b);
       break;
     case CGFontFamily::FREE_SERIF_18PT:
       _nativeSprite->setFreeFont(&FreeSerif18pt7b);
       break;
+    case CGFontFamily::FREE_SERIF_BOLD_18PT:
+      _nativeSprite->setFreeFont(&FreeSerifBold18pt7b);
+      break;
     case CGFontFamily::FREE_SERIF_24PT:
       _nativeSprite->setFreeFont(&FreeSerif24pt7b);
+      break;
+    case CGFontFamily::FREE_SERIF_BOLD_24PT:
+      _nativeSprite->setFreeFont(&FreeSerifBold24pt7b);
       break;
     default:
       break;

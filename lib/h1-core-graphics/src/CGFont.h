@@ -12,36 +12,40 @@ enum class CGFontFamily {
   ADAFRUIT_8PX = 1,
 
   // Small 16 pixel high font.
-  SMALL_16PX = 2,
+  SMALL_16PX,
 
   // Medium 26 pixel high font.
-  MEDIUM_26PX = 4,
+  MEDIUM_26PX,
 
   // Large 48 pixel font, only contains characters 1234567890:-.apm.
-  LARGE_48PX = 6,
+  LARGE_48PX,
 
   // 7 segment 48 pixel font, only contains characters 1234567890:-.
-  DIGITAL_7_SEGMENT_48PX = 7,
+  DIGITAL_7_SEGMENT_48PX,
 
   // Large 75 pixel font, only contains characters 1234567890:-.
-  LARGE_75PX = 8,
+  LARGE_75PX,
 
 
   /**************************************/
   /* Free Fonts                         */
   /**************************************/
   FREE_MONO_9PT = 11,
-  FREE_MONO_12PT = 12,
-  FREE_MONO_18PT = 13,
-  FREE_MONO_24PT = 14,
+  FREE_MONO_12PT,
+  FREE_MONO_18PT,
+  FREE_MONO_24PT,
 
-  FREE_SANS_9PT = 15,
-  FREE_SANS_12PT = 16,
-  FREE_SANS_18PT = 17,
-  FREE_SANS_24PT = 18,
+  FREE_SANS_9PT,
+  FREE_SANS_12PT,
+  FREE_SANS_18PT,
+  FREE_SANS_24PT,
 
-  FREE_SERIF_9PT = 19,
-  FREE_SERIF_12PT = 20,
-  FREE_SERIF_18PT = 21,
-  FREE_SERIF_24PT = 22
+  FREE_SERIF_9PT,
+  FREE_SERIF_BOLD_9PT,
+  FREE_SERIF_12PT,
+  FREE_SERIF_BOLD_12PT,
+  FREE_SERIF_18PT,
+  FREE_SERIF_BOLD_18PT,
+  FREE_SERIF_24PT,
+  FREE_SERIF_BOLD_24PT,
 };
