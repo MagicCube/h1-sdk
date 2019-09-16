@@ -98,6 +98,11 @@ void CGDrawingContext::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor tr
   _drawable->drawBitmap(bitmap, absPosition, transparentColor);
 }
 
+void CGDrawingContext::drawXBM(CGXBM *xbm, CGPoint position, CGColor color) {
+  auto absPosition = convertToAbsolute(position);
+  _drawable->drawXBM(xbm, absPosition, color);
+}
+
 void CGDrawingContext::fill(CGColor color) {
   _drawable->fill(color);
 }

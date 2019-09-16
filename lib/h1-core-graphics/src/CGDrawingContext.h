@@ -102,7 +102,10 @@ public:
   void drawBitmap(CGBitmap *bitmap, CGPoint position) override;
 
   // Draws the transparental bitmap at given position.
-  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor);
+  void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) override;
+
+  // Draws the `XBM` format image at given position.
+  void drawXBM(CGXBM *xbm, CGPoint position, CGColor color) override;
 
   // Fills the contextual drawable with given color.
   void fill(CGColor color) override;

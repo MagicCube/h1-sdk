@@ -11,6 +11,7 @@
 #include "CGPoint.h"
 #include "CGRect.h"
 #include "CGSize.h"
+#include "CGXBM.h"
 
 #include "TFTBitmap.h"
 #include "TFTDisplay.h"

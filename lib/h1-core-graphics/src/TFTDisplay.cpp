@@ -182,6 +182,10 @@ void TFTDisplay::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transpar
   }
 }
 
+void TFTDisplay::drawXBM(CGXBM *xbm, CGPoint position, CGColor color) {
+  _nativeDisplay->drawXBitmap(position.x, position.y, xbm->data(), xbm->size().width, xbm->size().height, color);
+}
+
 void TFTDisplay::fill(CGColor color) {
   _nativeDisplay->fillScreen(color);
 }

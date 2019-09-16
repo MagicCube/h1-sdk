@@ -81,6 +81,8 @@ public:
 
   void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) override;
 
+  void drawXBM(CGXBM *xbm, CGPoint position, CGColor color) override;
+
   void fill(CGColor color) override;
 
   void fillRect(CGRect rect, CGColor color) override;

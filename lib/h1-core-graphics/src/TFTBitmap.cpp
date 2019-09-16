@@ -186,6 +186,10 @@ void TFTBitmap::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transpare
   drawBitmap(bitmap, position);
 }
 
+void TFTBitmap::drawXBM(CGXBM *xbm, CGPoint position, CGColor color) {
+  _nativeSprite->drawXBitmap(position.x, position.y, xbm->data(), xbm->size().width, xbm->size().height, color);
+}
+
 void TFTBitmap::fill(CGColor color) {
   _nativeSprite->fillSprite(color);
 }

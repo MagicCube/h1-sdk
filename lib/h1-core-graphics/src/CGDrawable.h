@@ -5,6 +5,7 @@
 #include "CGColor.h"
 #include "CGFont.h"
 #include "CGRect.h"
+#include "CGXBM.h"
 #include "types.h"
 
 class CGBitmap;
@@ -69,10 +70,13 @@ public:
   virtual void drawString(String string, CGPoint position) = 0;
 
   // Draws the specific bitmap at given position.
-  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position);
+  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position) = 0;
 
   // Draws the transparental bitmap at given position.
-  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor);
+  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) = 0;
+
+  // Draws the `XBM` format image at given position.
+  virtual void drawXBM(CGXBM *xbm, CGPoint position, CGColor color) = 0;
 
   // Fills the contextual canvas with given color.
   virtual void fill(CGColor color) = 0;
