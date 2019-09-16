@@ -7,7 +7,7 @@
 // A class represents the screen.
 class UIScreenClass {
 public:
-  // Initialize the screen.
+  // Initializes the screen.
   void begin();
 
   // Gets the bounds of the screen.
