@@ -15,59 +15,87 @@ public:
   // Creates a new instance of `CGDrawingContext`.
   CGDrawingContext(CGDrawable *drawable, CGRect frame);
 
+  // Creates a new instance of `CGDrawingContext` with the same frame of the given `canvas`.
   CGDrawingContext(CGCanvas *canvas) : CGDrawingContext(canvas, canvas->frame()) {
   }
 
+  // Gets a `CGRect` represents origin and size of the contextual drawable in
+  // parental coordinate.
   CGRect frame() override {
     return _frame;
   }
 
+  // Gets a `CGRect` represents origin and size of the contextual drawable in
+  // relative coordinate which location is always (0, 0).
   CGRect bounds() override {
     return _bounds;
   }
 
+  // Gets the origin of the contextual drawable in parental coordinate.
   CGPoint origin() override {
     return _frame.origin;
   }
 
+  // Gets the size of the drawable object.
   CGSize size() override {
     return _frame.size;
   }
 
+  // Gets current font family.
   CGFontFamily fontFamily() override;
 
+  // Sets current font family.
   void fontFamily(CGFontFamily value) override;
 
+  // Gets current font size.
   uint8_t fontSize() override;
 
+  // Sets current font size.
   void fontSize(uint8_t value) override;
 
+  // Gets current text color.
   CGColor textColor() override;
 
+  // Sets current text color.
   void textColor(CGColor value) override;
 
+  // Draws a pixel at given point.
   void drawPixel(CGPoint point, CGColor color) override;
 
+  // Draws a line connecting 2 given points.
   void drawLine(CGPoint p1, CGPoint p2, CGColor color) override;
 
+  // Draws a vertical line from origin with given length.
   void drawFastVLine(CGPoint origin, CGInt height, CGColor color) override;
 
+  // Draws a horizontal line from origin with given length.
   void drawFastHLine(CGPoint origin, CGInt width, CGColor color) override;
 
+  // Draws the specific rectangle.
   void drawRect(CGRect rect, CGColor color) override;
 
+  // Draws the specific round rectangle.
   void drawRoundRect(CGRect rect, CGInt roundness, CGColor color) override;
 
+  // Draws the specific circle.
   void drawCircle(CGPoint center, CGInt radius, CGColor color) override;
 
+  // Draws text at given position.
+  // You can specify font and color by `font(v)`, `fontSize(v)` and
+  // `textColor(v)`, while use `textAlign(v)` and `textBaseline(v)` to set text
+  // alignment.
   void drawString(String string, CGPoint position) override;
 
+  // Fills the contextual drawable with given color.
   void fill(CGColor color) override;
 
+  // Fills the specific rectangle;
   void fillRect(CGRect rect, CGColor color) override;
 
+  // Fills the specific round rectangle.
   void fillRoundRect(CGRect rect, CGInt roundness, CGColor color) override;
 
+  // Fills the specific circle.
   void fillCircle(CGPoint center, CGInt radius, CGColor color) override;
 
   // Converts a local x-coordinate value to absolute.

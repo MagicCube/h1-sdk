@@ -55,12 +55,12 @@ public:
   // Fills the contextual canvas with given color.
   virtual void fill(CGColor color) = 0;
 
-  // Fills the specific rectangle;
+  // Fills the specific rectangle.
   virtual void fillRect(CGRect rect, CGColor color) = 0;
 
-  // Fills the specific round rectangle;
+  // Fills the specific round rectangle.
   virtual void fillRoundRect(CGRect rect, CGInt roundness, CGColor color) = 0;
 
-  // Fills the specific circle;
+  // Fills the specific circle.
   virtual void fillCircle(CGPoint center, CGInt radius, CGColor color) = 0;
 };
