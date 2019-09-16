@@ -45,9 +45,32 @@ void TFTBitmap::textColor(CGColor value) {
   _nativeSprite->setTextColor(value);
 }
 
+CGTextAlign TFTBitmap::textAlign() {
+  return _textAlign;
+}
+
+void TFTBitmap::textAlign(CGTextAlign value) {
+  _textAlign = value;
+  _updateTextDatum();
+}
+
+CGTextBaseline TFTBitmap::textBaseline() {
+  return _textBaseline;
+}
+
+void TFTBitmap::textBaseline(CGTextBaseline value) {
+  _textBaseline = value;
+  _updateTextDatum();
+}
+
 void TFTBitmap::alloc() {
   _nativeSprite->setColorDepth((int8_t)_colorDepth);
   _nativeSprite->createSprite(size().width, size().height);
+  fontFamily(_fontFamily);
+  fontSize(_fontSize);
+  textAlign(_textAlign);
+  textBaseline(_textBaseline);
+  textColor(_textColor);
 }
 
 void TFTBitmap::free() {
@@ -122,4 +145,44 @@ void TFTBitmap::fillRoundRect(CGRect rect, CGInt roundness, CGColor color) {
 
 void TFTBitmap::fillCircle(CGPoint center, CGInt radius, CGColor color) {
   _nativeSprite->fillCircle(center.x, center.y, radius, color);
+}
+
+void TFTBitmap::_updateTextDatum() {
+  if (_textAlign == CGTextAlign::LEFT) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeSprite->setTextDatum(TL_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeSprite->setTextDatum(ML_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeSprite->setTextDatum(BL_DATUM);
+      break;
+    }
+  } else if (_textAlign == CGTextAlign::CENTER) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeSprite->setTextDatum(TC_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeSprite->setTextDatum(MC_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeSprite->setTextDatum(BC_DATUM);
+      break;
+    }
+  } else if (_textAlign == CGTextAlign::RIGHT) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeSprite->setTextDatum(TR_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeSprite->setTextDatum(MR_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeSprite->setTextDatum(BR_DATUM);
+      break;
+    }
+  }
 }

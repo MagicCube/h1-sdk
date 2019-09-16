@@ -31,6 +31,22 @@ void CGDrawingContext::textColor(CGColor value) {
   _drawable->textColor(value);
 }
 
+CGTextAlign CGDrawingContext::textAlign() {
+  return _drawable->textAlign();
+}
+
+void CGDrawingContext::textAlign(CGTextAlign value) {
+  _drawable->textAlign(value);
+}
+
+CGTextBaseline CGDrawingContext::textBaseline() {
+  return _drawable->textBaseline();
+}
+
+void CGDrawingContext::textBaseline(CGTextBaseline value) {
+  _drawable->textBaseline(value);
+}
+
 void CGDrawingContext::drawPixel(CGPoint point, CGColor color) {
   auto absPoint = convertToAbsolute(point);
   _drawable->drawPixel(absPoint, color);

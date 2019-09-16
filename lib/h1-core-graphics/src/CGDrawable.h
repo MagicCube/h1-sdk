@@ -3,7 +3,9 @@
 #include <Arduino.h>
 
 #include "CGColor.h"
+#include "CGFont.h"
 #include "CGRect.h"
+#include "types.h"
 
 class CGBitmap;
 
@@ -27,6 +29,18 @@ public:
 
   // Sets current text color.
   virtual void textColor(CGColor value) = 0;
+
+  // Gets current text alignment.
+  virtual CGTextAlign textAlign() = 0;
+
+  // Sets current text alignment.
+  virtual void textAlign(CGTextAlign value) = 0;
+
+  // Gets current text baseline.
+  virtual CGTextBaseline textBaseline() = 0;
+
+  // Sets current text baseline.
+  virtual void textBaseline(CGTextBaseline value) = 0;
 
   // Draws a pixel at given point.
   virtual void drawPixel(CGPoint point, CGColor color) = 0;

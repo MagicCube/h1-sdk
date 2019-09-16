@@ -59,6 +59,18 @@ public:
   // Sets current text color.
   void textColor(CGColor value) override;
 
+  // Gets current text alignment.
+  CGTextAlign textAlign() override;
+
+  // Sets current text alignment.
+  void textAlign(CGTextAlign value) override;
+
+  // Gets current text baseline.
+  CGTextBaseline textBaseline() override;
+
+  // Sets current text baseline.
+  void textBaseline(CGTextBaseline value) override;
+
   // Draws a pixel at given point.
   void drawPixel(CGPoint point, CGColor color) override;
 

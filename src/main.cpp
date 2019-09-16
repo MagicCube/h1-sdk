@@ -17,11 +17,15 @@ void setup() {
 
   screenContext = UIScreen.createDrawingContext();
   bitmapContext = bitmap.createDrawingContext();
+  bitmapContext->fontFamily(CGFontFamily::MEDIUM_26PX);
+  bitmapContext->textColor(CGCOLOR_BLACK);
+  bitmapContext->textAlign(CGTextAlign::CENTER);
+  bitmapContext->textBaseline(CGTextBaseline::MIDDLE);
   screenContext->fill(CGCOLOR_BLACK);
 }
 
 void loop() {
-  bitmapContext->fill(CGCOLOR_BLACK);
+  bitmapContext->fill(CGCOLOR_RED);
   bitmapContext->fillCircle(bitmapContext->frame().center(), radius, CGCOLOR_WHITE);
   radius += direction * 6;
   if (radius >= bitmapContext->size().width / 2) {
@@ -29,5 +33,6 @@ void loop() {
   } else if (radius <= 0) {
     direction = 1;
   }
+  bitmapContext->drawString("Hello", bitmapContext->frame().center());
   screenContext->drawBitmap(&bitmap, CGPointZero);
 }

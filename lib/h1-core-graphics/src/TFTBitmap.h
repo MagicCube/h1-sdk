@@ -46,6 +46,14 @@ public:
 
   void textColor(CGColor value) override;
 
+  CGTextAlign textAlign() override;
+
+  void textAlign(CGTextAlign value) override;
+
+  CGTextBaseline textBaseline() override;
+
+  void textBaseline(CGTextBaseline value) override;
+
   void alloc() override;
 
   void free() override;
@@ -87,8 +95,12 @@ private:
   CGColorDepth _colorDepth;
 
   CGColor _textColor = CGCOLOR_WHITE;
+  CGTextAlign _textAlign = CGTextAlign::LEFT;
+  CGTextBaseline _textBaseline = CGTextBaseline::TOP;
   CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
   uint8_t _fontSize = 1;
 
   TFT_eSprite *_nativeSprite;
+
+  void _updateTextDatum();
 };

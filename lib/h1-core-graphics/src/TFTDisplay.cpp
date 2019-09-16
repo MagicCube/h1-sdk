@@ -42,11 +42,31 @@ void TFTDisplay::textColor(CGColor value) {
   _nativeDisplay->setTextColor(value);
 }
 
+CGTextAlign TFTDisplay::textAlign() {
+  return _textAlign;
+}
+
+void TFTDisplay::textAlign(CGTextAlign value) {
+  _textAlign = value;
+  _updateTextDatum();
+}
+
+CGTextBaseline TFTDisplay::textBaseline() {
+  return _textBaseline;
+}
+
+void TFTDisplay::textBaseline(CGTextBaseline value) {
+  _textBaseline = value;
+  _updateTextDatum();
+}
+
 void TFTDisplay::begin() {
   _nativeDisplay->begin();
 
   fontFamily(_fontFamily);
   fontSize(_fontSize);
+  textAlign(_textAlign);
+  textBaseline(_textBaseline);
   textColor(_textColor);
 }
 
@@ -117,4 +137,44 @@ void TFTDisplay::fillRoundRect(CGRect rect, CGInt roundness, CGColor color) {
 
 void TFTDisplay::fillCircle(CGPoint center, CGInt radius, CGColor color) {
   _nativeDisplay->fillCircle(center.x, center.y, radius, color);
+}
+
+void TFTDisplay::_updateTextDatum() {
+  if (_textAlign == CGTextAlign::LEFT) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeDisplay->setTextDatum(TL_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeDisplay->setTextDatum(ML_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeDisplay->setTextDatum(BL_DATUM);
+      break;
+    }
+  } else if (_textAlign == CGTextAlign::CENTER) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeDisplay->setTextDatum(TC_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeDisplay->setTextDatum(MC_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeDisplay->setTextDatum(BC_DATUM);
+      break;
+    }
+  } else if (_textAlign == CGTextAlign::RIGHT) {
+    switch (_textBaseline) {
+    case CGTextBaseline::TOP:
+      _nativeDisplay->setTextDatum(TR_DATUM);
+      break;
+    case CGTextBaseline::MIDDLE:
+      _nativeDisplay->setTextDatum(MR_DATUM);
+      break;
+    case CGTextBaseline::BOTTOM:
+      _nativeDisplay->setTextDatum(BR_DATUM);
+      break;
+    }
+  }
 }
