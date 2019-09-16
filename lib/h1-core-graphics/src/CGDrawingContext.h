@@ -2,11 +2,7 @@
 
 #include <Arduino.h>
 
-#include <TFT_eSPI.h>
-
-#include "CGPoint.h"
-#include "CGRect.h"
-#include "CGSize.h"
+#include "CGCanvas.h"
 #include "colors.h"
 #include "types.h"
 
@@ -14,85 +10,65 @@
 // A drawing context can be created from screen, views or a bitmap.
 //
 // NOTE: All the drawing and filling commands are in relative coordinate.
-class CGDrawingContext {
+class CGDrawingContext : public CGCanvas {
 public:
   // Creates a new instance of `CGDrawingContext`.
-  // The `nativeTFT` could be a `TFT_eSPI` or `TFT_eSprite`.
-  CGDrawingContext(TFT_eSPI *nativeTFT, CGRect frame, bool inMemory);
+  CGDrawingContext(CGDrawable *drawable, CGRect frame);
 
-  // Creates a new instance of `CGDrawingContext`.
-  // The `nativeTFT` could be a `TFT_eSPI` or `TFT_eSprite`.
-  CGDrawingContext(TFT_eSPI *nativeTFT, CGSize size, bool inMemory);
-
-  // Gets a `CGRect` represents origin and size of the contextual canvas in
-  // absolute coordinate.
-  CGRect frame();
-
-  // Shortcuts for `frame().origin`.
-  CGPoint origin() {
-    return frame().origin;
+  CGDrawingContext(CGCanvas *canvas) : CGDrawingContext(canvas, canvas->frame()) {
   }
 
-  // Shortcuts for `frame().size`.
-  CGSize size() {
-    return frame().size;
+  CGRect frame() override {
+    return _frame;
   }
 
-  // Gets current font family.
-  CGFontFamily fontFamily();
+  CGRect bounds() override {
+    return _bounds;
+  }
 
-  // Sets current font family.
-  void fontFamily(CGFontFamily value);
+  CGPoint origin() override {
+    return _frame.origin;
+  }
 
-  // Gets current font size.
-  uint8_t fontSize();
+  CGSize size() override {
+    return _frame.size;
+  }
 
-  // Sets current font size.
-  void fontSize(uint8_t value);
+  CGFontFamily fontFamily() override;
 
-  // Gets current text color.
-  CGColor textColor();
+  void fontFamily(CGFontFamily value) override;
 
-  // Sets current text color.
-  void textColor(CGColor value);
+  uint8_t fontSize() override;
 
-  // Draws a pixel at given point.
-  void drawPixel(CGPoint point, CGColor color);
+  void fontSize(uint8_t value) override;
 
-  // Draws a line connecting 2 given points.
-  void drawLine(CGPoint p1, CGPoint p2, CGColor color);
+  CGColor textColor() override;
 
-  // Draws a vertical line from origin with given length.
-  void drawFastVLine(CGPoint origin, CGInt height, CGColor color);
+  void textColor(CGColor value) override;
 
-  // Draws a horizontal line from origin with given length.
-  void drawFastHLine(CGPoint origin, CGInt width, CGColor color);
+  void drawPixel(CGPoint point, CGColor color) override;
 
-  // Draws the specific rectangle.
-  void drawRect(CGRect rect, CGColor color);
+  void drawLine(CGPoint p1, CGPoint p2, CGColor color) override;
 
-  // Draws the specific round rectangle.
-  void drawRoundRect(CGRect rect, CGInt roundness, CGColor color);
+  void drawFastVLine(CGPoint origin, CGInt height, CGColor color) override;
 
-  // Draws the specific circle.
-  void drawCircle(CGPoint center, CGInt radius, CGColor color);
+  void drawFastHLine(CGPoint origin, CGInt width, CGColor color) override;
 
-  // Draws text at given position.
-  // You can specify font and color by `font(v)`, `fontSize(v)` and
-  // `textColor(v)`, while use `textAlign(v)` to set text alignment.
-  void drawString(String string, CGPoint position);
+  void drawRect(CGRect rect, CGColor color) override;
 
-  // Fills the contextual canvas with given color.
-  void fill(CGColor color);
+  void drawRoundRect(CGRect rect, CGInt roundness, CGColor color) override;
 
-  // Fills the specific rectangle;
-  void fillRect(CGRect rect, CGColor color);
+  void drawCircle(CGPoint center, CGInt radius, CGColor color) override;
 
-  // Fills the specific round rectangle;
-  void fillRoundRect(CGRect rect, CGInt roundness, CGColor color);
+  void drawString(String string, CGPoint position) override;
 
-  // Fills the specific circle;
-  void fillCircle(CGPoint center, CGInt radius, CGColor color);
+  void fill(CGColor color) override;
+
+  void fillRect(CGRect rect, CGColor color) override;
+
+  void fillRoundRect(CGRect rect, CGInt roundness, CGColor color) override;
+
+  void fillCircle(CGPoint center, CGInt radius, CGColor color) override;
 
   // Converts a local x-coordinate value to absolute.
   CGInt convertToAbsoluteY(CGInt relativeX) {
@@ -120,22 +96,12 @@ public:
     return CGRect(convertToAbsolute(relativeRect.origin), relativeRect.size);
   }
 
-protected:
-  // Creates a new instance of `CGDrawingContext`.
-  CGDrawingContext(CGRect frame, bool inMemory);
-
 private:
   CGRect _frame;
+  CGRect _bounds;
 
   // True if the origin of this context is (0, 0).
   bool _zeroTranslation;
 
-  // True if the context is a sprite.
-  bool _inMemory;
-
-  CGColor _textColor = CGCOLOR_WHITE;
-  CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
-  uint8_t _fontSize = 1;
-
-  TFT_eSPI *_nativeTFT;
+  CGDrawable *_drawable;
 };
