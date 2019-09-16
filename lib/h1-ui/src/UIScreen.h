@@ -7,6 +7,9 @@
 // A class represents the screen.
 class UIScreenClass {
 public:
+  // Creates a new instance of `UIScreenClass`.
+  UIScreenClass();
+
   // Initializes the screen.
   void begin();
 

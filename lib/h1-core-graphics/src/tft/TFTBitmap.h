@@ -4,19 +4,15 @@
 
 #include <TFT_eSPI.h>
 
-#include "../CGDisplay.h"
+#include "../CGBitmap.h"
 
-// A class represents the TFT display.
-class TFTDisplay : public CGDisplay {
+// A class represents TFT bitmap.
+class TFTBitmap : CGBitmap {
 public:
-  // Creates a new instance of `TFTDisplay`.
-  TFTDisplay();
+  // Creates a new instance of `TFTBitmap`.
+  TFTBitmap(CGSize size, CGColorDepth colorDepth);
 
-  // Gets the only instance of `TFTDisplay`.
-  static TFTDisplay *instance();
-
-  // Gets the native `TFT_eSPI` of the display.
-  TFT_eSPI *nativeTFT();
+  ~TFTBitmap() override;
 
   CGRect bounds() override {
     return _bounds;
@@ -46,7 +42,9 @@ public:
 
   void textColor(CGColor value) override;
 
-  void begin() override;
+  void alloc() override;
+
+  void free() override;
 
   void drawPixel(CGPoint point, CGColor color) override;
 
@@ -74,10 +72,11 @@ public:
 
 private:
   CGRect _bounds;
+  CGColorDepth _colorDepth;
 
   CGColor _textColor = CGCOLOR_WHITE;
   CGFontFamily _fontFamily = CGFontFamily::ADAFRUIT_8PX;
   uint8_t _fontSize = 1;
 
-  TFT_eSPI *_nativeDisplay;
+  TFT_eSprite *_nativeSprite;
 };

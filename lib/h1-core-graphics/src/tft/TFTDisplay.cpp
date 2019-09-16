@@ -1,16 +1,15 @@
 #include "TFTDisplay.h"
 
+static TFTDisplay *__instance;
+
 TFTDisplay::TFTDisplay() {
   _nativeDisplay = new TFT_eSPI();
   _bounds = CGRect(CGPointZero, TFT_WIDTH, TFT_HEIGHT);
+  __instance = this;
 }
 
-void TFTDisplay::begin() {
-  _nativeDisplay->begin();
-
-  fontFamily(_fontFamily);
-  fontSize(_fontSize);
-  textColor(_textColor);
+TFTDisplay *TFTDisplay::instance() {
+  return __instance;
 }
 
 CGFontFamily TFTDisplay::fontFamily() {
@@ -31,6 +30,7 @@ uint8_t TFTDisplay::fontSize() {
 
 void TFTDisplay::fontSize(uint8_t value) {
   _fontSize = value;
+  _nativeDisplay->setTextSize(_fontSize);
 }
 
 CGColor TFTDisplay::textColor() {
@@ -39,6 +39,15 @@ CGColor TFTDisplay::textColor() {
 
 void TFTDisplay::textColor(CGColor value) {
   _textColor = value;
+  _nativeDisplay->setTextColor(value);
+}
+
+void TFTDisplay::begin() {
+  _nativeDisplay->begin();
+
+  fontFamily(_fontFamily);
+  fontSize(_fontSize);
+  textColor(_textColor);
 }
 
 void TFTDisplay::drawPixel(CGPoint point, CGColor color) {

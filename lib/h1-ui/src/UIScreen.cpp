@@ -1,5 +1,9 @@
 #include "UIScreen.h"
 
+UIScreenClass::UIScreenClass() {
+  _display = new TFTDisplay();
+}
+
 void UIScreenClass::begin() {
   _display->begin();
 }
