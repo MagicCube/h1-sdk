@@ -1,6 +1,6 @@
 #pragma once
 
-#include "colors.h"
+#include "CGColor.h"
 #include "types.h"
 
 #include "CGBitmap.h"

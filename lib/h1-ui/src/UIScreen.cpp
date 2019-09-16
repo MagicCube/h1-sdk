@@ -24,4 +24,8 @@ CGSize UIScreenClass::size() {
   return _display->size();
 }
 
+CGDrawingContext *UIScreenClass::createDrawingContext(CGRect specificFrame) {
+  return _display->createDrawingContext(specificFrame);
+}
+
 UIScreenClass UIScreen;

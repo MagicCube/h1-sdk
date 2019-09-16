@@ -28,6 +28,9 @@ public:
   // Gets the size of the screen.
   CGSize size();
 
+  // Creates a new `CGDrawingContext` for the screen.
+  CGDrawingContext *createDrawingContext(CGRect specificFrame = CGRectZero);
+
 private:
   CGDisplay *_display;
 };

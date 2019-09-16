@@ -72,6 +72,16 @@ void CGDrawingContext::drawString(String string, CGPoint position) {
   _drawable->drawString(string, absPosition);
 }
 
+void CGDrawingContext::drawBitmap(CGBitmap *bitmap, CGPoint position) {
+  auto absPosition = convertToAbsolute(position);
+  _drawable->drawBitmap(bitmap, absPosition);
+}
+
+void CGDrawingContext::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) {
+  auto absPosition = convertToAbsolute(position);
+  _drawable->drawBitmap(bitmap, absPosition, transparentColor);
+}
+
 void CGDrawingContext::fill(CGColor color) {
   _drawable->fill(color);
 }

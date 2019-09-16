@@ -54,6 +54,14 @@ void TFTBitmap::free() {
   _nativeSprite->deleteSprite();
 }
 
+uint8_t *TFTBitmap::to8BitArray() {
+  return (uint8_t *)_nativeSprite->frameBuffer(1);
+}
+
+uint16_t *TFTBitmap::to16BitArray() {
+  return (uint16_t *)_nativeSprite->frameBuffer(1);
+}
+
 void TFTBitmap::drawPixel(CGPoint point, CGColor color) {
   _nativeSprite->drawPixel(point.x, point.y, color);
 }
@@ -84,6 +92,20 @@ void TFTBitmap::drawCircle(CGPoint center, CGInt radius, CGColor color) {
 
 void TFTBitmap::drawString(String string, CGPoint position) {
   _nativeSprite->drawString(string, position.x, position.y);
+}
+
+void TFTBitmap::drawBitmap(CGBitmap *bitmap, CGPoint position) {
+  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+    _nativeSprite->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
+                             bitmap->to16BitArray());
+  } else {
+    // Not supported.
+  }
+}
+
+void TFTBitmap::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) {
+  // Not supported.
+  drawBitmap(bitmap, position);
 }
 
 void TFTBitmap::fill(CGColor color) {

@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 #include "CGCanvas.h"
-#include "colors.h"
+#include "CGColor.h"
 #include "types.h"
 
 // A class describes visual content using draw, push, and pop commands.
@@ -85,6 +85,12 @@ public:
   // `textColor(v)`, while use `textAlign(v)` and `textBaseline(v)` to set text
   // alignment.
   void drawString(String string, CGPoint position) override;
+
+  // Draws the specific bitmap at given position.
+  void drawBitmap(CGBitmap *bitmap, CGPoint position) override;
+
+  // Draws the transparental bitmap at given position.
+  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor);
 
   // Fills the contextual drawable with given color.
   void fill(CGColor color) override;

@@ -82,6 +82,27 @@ void TFTDisplay::drawString(String string, CGPoint position) {
   _nativeDisplay->drawString(string, position.x, position.y);
 }
 
+void TFTDisplay::drawBitmap(CGBitmap *bitmap, CGPoint position) {
+  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+    _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
+                              bitmap->to16BitArray());
+  } else {
+    _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
+                              bitmap->to8BitArray(), bitmap->colorDepth() == CGColorDepth::COLOR_8_BIT);
+  }
+}
+
+void TFTDisplay::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) {
+  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+    _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
+                              bitmap->to16BitArray(), transparentColor);
+  } else {
+    _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
+                              bitmap->to8BitArray(), transparentColor,
+                              bitmap->colorDepth() == CGColorDepth::COLOR_8_BIT);
+  }
+}
+
 void TFTDisplay::fill(CGColor color) {
   _nativeDisplay->fillScreen(color);
 }

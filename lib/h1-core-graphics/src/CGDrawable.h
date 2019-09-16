@@ -2,8 +2,10 @@
 
 #include <Arduino.h>
 
+#include "CGColor.h"
 #include "CGRect.h"
-#include "colors.h"
+
+class CGBitmap;
 
 // An abstract class represents a drawable object.
 class CGDrawable {
@@ -47,10 +49,16 @@ public:
   // Draws the specific circle.
   virtual void drawCircle(CGPoint center, CGInt radius, CGColor color) = 0;
 
-  // Draws text at given position.
+  // Draws the text at given position.
   // You can specify font and color by `font(v)`, `fontSize(v)` and
   // `textColor(v)`, while use `textAlign(v)` to set text alignment.
   virtual void drawString(String string, CGPoint position) = 0;
+
+  // Draws the specific bitmap at given position.
+  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position);
+
+  // Draws the transparental bitmap at given position.
+  virtual void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor);
 
   // Fills the contextual canvas with given color.
   virtual void fill(CGColor color) = 0;

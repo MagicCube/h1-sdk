@@ -7,7 +7,7 @@
 #include "../CGBitmap.h"
 
 // A class represents TFT bitmap.
-class TFTBitmap : CGBitmap {
+class TFTBitmap : public CGBitmap {
 public:
   // Creates a new instance of `TFTBitmap`.
   TFTBitmap(CGSize size, CGColorDepth colorDepth);
@@ -50,6 +50,10 @@ public:
 
   void free() override;
 
+  uint8_t *to8BitArray() override;
+
+  uint16_t *to16BitArray() override;
+
   void drawPixel(CGPoint point, CGColor color) override;
 
   void drawLine(CGPoint p1, CGPoint p2, CGColor color) override;
@@ -65,6 +69,10 @@ public:
   void drawCircle(CGPoint center, CGInt radius, CGColor color) override;
 
   void drawString(String string, CGPoint position) override;
+
+  void drawBitmap(CGBitmap *bitmap, CGPoint position) override;
+
+  void drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) override;
 
   void fill(CGColor color) override;
 
