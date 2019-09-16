@@ -1,15 +1,23 @@
 #include "UIScreen.h"
 
 void UIScreenClass::begin() {
-  CGDisplay.begin();
+  _display->begin();
+}
+
+CGDisplay *UIScreenClass::display() {
+  return _display;
 }
 
 CGRect UIScreenClass::bounds() {
-  return CGDisplay.bounds();
+  return _display->bounds();
+}
+
+CGPoint UIScreenClass::origin() {
+  return _display->origin();
 }
 
 CGSize UIScreenClass::size() {
-  return CGDisplay.size();
+  return _display->size();
 }
 
 UIScreenClass UIScreen;
