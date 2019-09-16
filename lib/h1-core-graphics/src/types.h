@@ -42,3 +42,9 @@ enum class CGColorDepth {
   // 16-bit color which contains 65,536 colors.
   COLOR_16_BIT = 16
 };
+
+// Specify the text alignment.
+enum class CGTextAlign { LEFT, CENTER, RIGHT };
+
+// Specify the baseline of text.
+enum class CGTextBaseline { TOP, CENTER, BOTTOM };
