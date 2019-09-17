@@ -5,7 +5,7 @@
 class AppDelegate : public UIApplicationDelegate {
 public:
   void applicationDidBegin() override {
-    _clockView = new ClockView(UIScreen.bounds().centerRect(140, 48));
+    _clockView = new ClockView(UIScreen.bounds().centerRect(216, 48));
   }
 
   void applicationWillUpdate() override {
