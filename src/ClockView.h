@@ -18,7 +18,7 @@ public:
   void draw() override {
     auto now = millis();
     auto context = UIScreen.createDrawingContext(frame());
-    context->fill(CGCOLOR_RED);
+    context->fill(CGCOLOR_BLACK);
     context->setupFont(CGFontFamily::DIGITAL_7_SEGMENT_48PX);
     context->setupTextStyle(CGTextAlign::CENTER, CGTextBaseline::MIDDLE, CGCOLOR_WHITE);
     context->drawString(formatDuration(now), bounds().center());
