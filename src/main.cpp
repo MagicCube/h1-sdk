@@ -11,7 +11,7 @@ AppDelegate appDelegate;
 void setup() {
   Serial.begin(115200);
 
-  UIScreen.rotation(3);
+  UIScreen.rotation(1);
   UIScreen.begin();
   UIScreen.clear();
 
