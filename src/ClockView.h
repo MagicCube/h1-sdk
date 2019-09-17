@@ -19,6 +19,7 @@ public:
 
   void draw() override {
     auto now = millis();
+    _bufferContext->fill(CGCOLOR_BLACK);
     _bufferContext->setupFont(CGFontFamily::DIGITAL_7_SEGMENT_48PX);
     _bufferContext->setupTextStyle(CGTextAlign::CENTER, CGTextBaseline::MIDDLE, CGCOLOR_WHITE);
     _bufferContext->drawString(formatDuration(now), bounds().center());
