@@ -7,11 +7,6 @@
 class ClockView : public UIView {
 public:
   ClockView(CGRect frame) : UIView(frame) {
-    _buffer = new TFTBitmap(size(), CGColorDepth::BIT_1, false);
-  }
-
-  virtual ~ClockView() {
-    delete _buffer;
   }
 
   void update() {
@@ -22,17 +17,14 @@ public:
 
   void draw() override {
     auto now = millis();
-    _buffer->alloc();
-    auto context = _buffer->createDrawingContext();
+    auto context = UIScreen.createDrawingContext(frame());
+    context->fill(CGCOLOR_RED);
     context->setupFont(CGFontFamily::DIGITAL_7_SEGMENT_48PX);
     context->setupTextStyle(CGTextAlign::CENTER, CGTextBaseline::MIDDLE, CGCOLOR_WHITE);
     context->drawString(formatDuration(now), bounds().center());
-    UIScreen.drawingContext()->drawBitmap(_buffer, origin());
-    _buffer->free();
     _lastRedrawTime = now;
   }
 
 private:
   unsigned long _lastRedrawTime = 0;
-  TFTBitmap *_buffer;
 };
