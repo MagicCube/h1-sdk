@@ -10,6 +10,8 @@ public:
   // Creates a new instance of `UIView`.
   UIView(CGRect frame);
 
+  virtual ~UIView(){};
+
   // Gets a `CGRect` represents origin and size of the view in
   // parental coordinate.
   CGRect frame();
