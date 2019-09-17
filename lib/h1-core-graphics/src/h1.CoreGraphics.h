@@ -14,4 +14,5 @@
 #include "CGXBM.h"
 
 #include "TFTBitmap.h"
+#include "TFTBufferedDisplay.h"
 #include "TFTDisplay.h"
