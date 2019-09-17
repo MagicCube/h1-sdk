@@ -7,7 +7,6 @@ TFTBitmap::TFTBitmap(CGSize size, CGColorDepth colorDepth) : CGBitmap() {
   _colorDepth = colorDepth;
 
   _nativeSprite = new TFT_eSprite(TFTDisplay::instance()->nativeTFT());
-  alloc();
 }
 
 TFTBitmap::~TFTBitmap() {
