@@ -4,7 +4,7 @@
 
 enum class DurationFormat { HH_MM_SS, MM_SS };
 
-inline String formatDuration(unsigned long duration, DurationFormat format = DurationFormat::MM_SS) {
+inline String formatDuration(unsigned long duration, DurationFormat format = DurationFormat::HH_MM_SS) {
   auto totalSeconds = duration / 1000;
   uint16_t minutes = totalSeconds / 60;
   uint8_t seconds = totalSeconds % 60;
