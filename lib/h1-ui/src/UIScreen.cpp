@@ -1,7 +1,9 @@
 #include "UIScreen.h"
 
+#include "conf.h"
+
 UIScreenClass::UIScreenClass() {
-  _display = new TFTDisplay();
+  _display = new UI_SCREEN_DISPLAY_TYPE();
 }
 
 CGDisplay *UIScreenClass::display() {
@@ -32,8 +34,13 @@ void UIScreenClass::begin() {
   _display->begin();
 }
 
+void UIScreenClass::update() {
+  _display->update();
+}
+
 void UIScreenClass::clear() {
   _display->fill(CGCOLOR_BLACK);
+  _display->update();
 }
 
 CGDrawingContext *UIScreenClass::createDrawingContext(CGRect specificFrame) {
