@@ -12,7 +12,7 @@ public:
   // Creates a new instance of `TFTBitmap`.
   TFTBitmap(CGSize size, CGColorDepth colorDepth);
 
-  ~TFTBitmap();
+  virtual ~TFTBitmap();
 
   CGRect bounds() override {
     return _bounds;
