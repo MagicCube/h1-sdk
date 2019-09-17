@@ -11,4 +11,7 @@ public:
 
   virtual void applicationWillUpdate() {
   }
+
+  virtual void applicationWillRedraw() {
+  }
 };

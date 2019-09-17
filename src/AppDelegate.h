@@ -10,6 +10,9 @@ public:
 
   void applicationWillUpdate() override {
     _clockView->update();
+  }
+
+  void applicationWillRedraw() override {
     _clockView->redraw();
   }
 
