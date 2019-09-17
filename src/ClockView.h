@@ -10,6 +10,10 @@ public:
     _buffer = new TFTBitmap(size(), CGColorDepth::BIT_1);
   }
 
+  virtual ~ClockView() {
+    delete _buffer;
+  }
+
   void update() {
     if (millis() - _lastRedrawTime > 1000) {
       setNeedsRedraw();
