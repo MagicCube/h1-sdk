@@ -9,7 +9,7 @@ inline String formatDuration(unsigned long duration, DurationFormat format = Dur
   uint16_t minutes = totalSeconds / 60;
   uint8_t seconds = totalSeconds % 60;
   if (format == DurationFormat::HH_MM_SS) {
-    char result[8];
+    char result[9];
     sprintf(result, "%02d:%02d:%02d", minutes / 60, minutes % 60, seconds);
     return String(result);
   } else {

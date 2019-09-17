@@ -20,6 +20,7 @@ public:
     auto now = millis();
     auto context = _buffer->createDrawingContext();
     context->fill(CGCOLOR_BLACK);
+    // context->drawRect(bounds(), CGCOLOR_WHITE);
     context->setupFont(CGFontFamily::DIGITAL_7_SEGMENT_48PX);
     context->setupTextStyle(CGTextAlign::CENTER, CGTextBaseline::MIDDLE, CGCOLOR_WHITE);
     context->drawString(formatDuration(now), bounds().center());
