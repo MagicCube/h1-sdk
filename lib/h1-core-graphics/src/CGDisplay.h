@@ -11,6 +11,8 @@ public:
   // Initializes the `CGDisplay`.
   virtual void begin() = 0;
 
+  virtual void update(){};
+
   // Set rotation of the display.
   virtual void rotation(uint8_t rotation) = 0;
 
