@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-#define FPS 30
+#include "conf.h"
 
 // A class represents the UI application. The only singleton of the class is `UIApplication`.
 class UIApplicationClass {
