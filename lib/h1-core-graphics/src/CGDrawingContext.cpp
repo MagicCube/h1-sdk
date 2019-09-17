@@ -48,58 +48,58 @@ void CGDrawingContext::textBaseline(CGTextBaseline value) {
 }
 
 void CGDrawingContext::drawPixel(CGPoint point, CGColor color) {
-  auto absPoint = convertToAbsolute(point);
+  auto absPoint = convertToParental(point);
   _drawable->drawPixel(absPoint, color);
 }
 
 void CGDrawingContext::drawLine(CGPoint p1, CGPoint p2, CGColor color) {
-  auto absP1 = convertToAbsolute(p1);
-  auto absP2 = convertToAbsolute(p2);
+  auto absP1 = convertToParental(p1);
+  auto absP2 = convertToParental(p2);
   _drawable->drawLine(absP1, absP2, color);
 }
 
 void CGDrawingContext::drawFastVLine(CGPoint origin, CGInt height, CGColor color) {
-  auto absOrigin = convertToAbsolute(origin);
+  auto absOrigin = convertToParental(origin);
   _drawable->drawFastVLine(absOrigin, height, color);
 }
 
 void CGDrawingContext::drawFastHLine(CGPoint origin, CGInt width, CGColor color) {
-  auto absOrigin = convertToAbsolute(origin);
+  auto absOrigin = convertToParental(origin);
   _drawable->drawFastHLine(absOrigin, width, color);
 }
 
 void CGDrawingContext::drawRect(CGRect rect, CGColor color) {
-  auto absRect = convertToAbsolute(rect);
+  auto absRect = convertToParental(rect);
   _drawable->drawRect(absRect, color);
 }
 
 void CGDrawingContext::drawRoundRect(CGRect rect, CGInt roundness, CGColor color) {
-  auto absRect = convertToAbsolute(rect);
+  auto absRect = convertToParental(rect);
   _drawable->drawRoundRect(absRect, roundness, color);
 }
 
 void CGDrawingContext::drawCircle(CGPoint center, CGInt radius, CGColor color) {
-  auto absCenter = convertToAbsolute(center);
+  auto absCenter = convertToParental(center);
   _drawable->drawCircle(absCenter, radius, color);
 }
 
 void CGDrawingContext::drawString(String string, CGPoint position) {
-  auto absPosition = convertToAbsolute(position);
+  auto absPosition = convertToParental(position);
   _drawable->drawString(string, absPosition);
 }
 
 void CGDrawingContext::drawBitmap(CGBitmap *bitmap, CGPoint position) {
-  auto absPosition = convertToAbsolute(position);
+  auto absPosition = convertToParental(position);
   _drawable->drawBitmap(bitmap, absPosition);
 }
 
 void CGDrawingContext::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) {
-  auto absPosition = convertToAbsolute(position);
+  auto absPosition = convertToParental(position);
   _drawable->drawBitmap(bitmap, absPosition, transparentColor);
 }
 
 void CGDrawingContext::drawXBM(CGXBM *xbm, CGPoint position, CGColor color) {
-  auto absPosition = convertToAbsolute(position);
+  auto absPosition = convertToParental(position);
   _drawable->drawXBM(xbm, absPosition, color);
 }
 
@@ -108,16 +108,16 @@ void CGDrawingContext::fill(CGColor color) {
 }
 
 void CGDrawingContext::fillRect(CGRect rect, CGColor color) {
-  auto absRect = convertToAbsolute(rect);
+  auto absRect = convertToParental(rect);
   _drawable->fillRect(absRect, color);
 }
 
 void CGDrawingContext::fillRoundRect(CGRect rect, CGInt roundness, CGColor color) {
-  auto absRect = convertToAbsolute(rect);
+  auto absRect = convertToParental(rect);
   _drawable->fillRoundRect(absRect, roundness, color);
 }
 
 void CGDrawingContext::fillCircle(CGPoint center, CGInt radius, CGColor color) {
-  auto absCenter = convertToAbsolute(center);
+  auto absCenter = convertToParental(center);
   _drawable->fillCircle(absCenter, radius, color);
 }

@@ -138,29 +138,29 @@ public:
   void fillCircle(CGPoint center, CGInt radius, CGColor color) override;
 
   // Converts a local x-coordinate value to absolute.
-  CGInt convertToAbsoluteY(CGInt relativeX) {
+  CGInt convertToParentalX(CGInt relativeX) {
     return _frame.origin.x + relativeX;
   }
 
   // Converts a local y-coordinate value to absolute.
-  CGInt convertToAbsoluteX(CGInt relativeY) {
+  CGInt convertToParentalY(CGInt relativeY) {
     return _frame.origin.y + relativeY;
   }
 
   // Returns a new `CGPoint` which converted a local coordinate point to absolute.
-  CGPoint convertToAbsolute(CGPoint relativePoint) {
+  CGPoint convertToParental(CGPoint relativePoint) {
     if (_zeroTranslation) {
       return relativePoint;
     }
-    return CGPoint(convertToAbsoluteX(relativePoint.x), convertToAbsoluteY(relativePoint.y));
+    return CGPoint(convertToParentalX(relativePoint.x), convertToParentalY(relativePoint.y));
   }
 
   // Returns a new `CGRect` which converted a local coorinate rectangle to absolute.
-  CGRect convertToAbsolute(CGRect relativeRect) {
+  CGRect convertToParental(CGRect relativeRect) {
     if (_zeroTranslation) {
       return relativeRect;
     }
-    return CGRect(convertToAbsolute(relativeRect.origin), relativeRect.size);
+    return CGRect(convertToParental(relativeRect.origin), relativeRect.size);
   }
 
 private:
