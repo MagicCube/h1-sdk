@@ -34,6 +34,8 @@ public:
   // Initializes the screen.
   void begin();
 
+  void update();
+
   // Fill the screen with black.
   void clear();
 
