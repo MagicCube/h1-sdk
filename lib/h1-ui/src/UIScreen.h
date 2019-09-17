@@ -31,8 +31,11 @@ public:
   // Gets the global shared drawing context of the screen.
   CGDrawingContext *drawingContext();
 
-  // Initializes the screen.
+  // Initializes the screen with 8-bit color depth.
   void begin();
+
+  // Initializes the screen with given color depth.
+  void begin(CGColorDepth colorDepth);
 
   void update();
 

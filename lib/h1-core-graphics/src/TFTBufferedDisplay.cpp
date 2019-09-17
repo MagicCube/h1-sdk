@@ -1,8 +1,8 @@
 #include "TFTBufferedDisplay.h"
 
-void TFTBufferedDisplay::begin() {
-  _tftDisplay.begin();
-  _buffer = new TFTBitmap(size(), CGColorDepth::BIT_8);
+void TFTBufferedDisplay::begin(CGColorDepth colorDepth) {
+  _tftDisplay.begin(colorDepth);
+  _buffer = new TFTBitmap(size(), colorDepth);
 }
 
 void TFTBufferedDisplay::update() {

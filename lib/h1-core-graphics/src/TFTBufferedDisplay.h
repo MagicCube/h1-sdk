@@ -9,7 +9,7 @@
 // A class represents a buffered TFT display.
 class TFTBufferedDisplay : public CGDisplay {
 public:
-  void begin() override;
+  void begin(CGColorDepth colorDepth) override;
 
   void update() override;
 

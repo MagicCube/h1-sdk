@@ -9,7 +9,7 @@
 class CGDisplay : public CGCanvas {
 public:
   // Initializes the `CGDisplay`.
-  virtual void begin() = 0;
+  virtual void begin(CGColorDepth colorDepth) = 0;
 
   virtual void update(){};
 

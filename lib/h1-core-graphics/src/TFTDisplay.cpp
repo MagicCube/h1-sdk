@@ -62,7 +62,7 @@ void TFTDisplay::textBaseline(CGTextBaseline value) {
   _updateTextDatum();
 }
 
-void TFTDisplay::begin() {
+void TFTDisplay::begin(CGColorDepth colorDepth) {
   _nativeDisplay->begin();
 
   fontFamily(_fontFamily);

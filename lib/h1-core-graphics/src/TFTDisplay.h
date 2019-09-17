@@ -59,7 +59,7 @@ public:
 
   void textBaseline(CGTextBaseline value) override;
 
-  void begin() override;
+  void begin(CGColorDepth colorDepth) override;
 
   void drawPixel(CGPoint point, CGColor color) override;
 

@@ -30,8 +30,12 @@ CGSize UIScreenClass::size() {
   return _display->size();
 }
 
+void UIScreenClass::begin(CGColorDepth colorDepth) {
+  _display->begin(colorDepth);
+}
+
 void UIScreenClass::begin() {
-  _display->begin();
+  _display->begin(CGColorDepth::BIT_8);
 }
 
 void UIScreenClass::update() {
