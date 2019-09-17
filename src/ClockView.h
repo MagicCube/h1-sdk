@@ -7,7 +7,7 @@
 class ClockView : public UIView {
 public:
   ClockView(CGRect frame) : UIView(frame) {
-    _buffer = new TFTBitmap(size(), CGColorDepth::BIT_1);
+    _buffer = new TFTBitmap(size(), CGColorDepth::BIT_1, false);
   }
 
   virtual ~ClockView() {

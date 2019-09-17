@@ -10,7 +10,7 @@
 class TFTBitmap : public CGBitmap {
 public:
   // Creates a new instance of `TFTBitmap`.
-  TFTBitmap(CGSize size, CGColorDepth colorDepth);
+  TFTBitmap(CGSize size, CGColorDepth colorDepth, bool allocImmediately = true);
 
   virtual ~TFTBitmap();
 

@@ -2,11 +2,15 @@
 
 #include "TFTDisplay.h"
 
-TFTBitmap::TFTBitmap(CGSize size, CGColorDepth colorDepth) : CGBitmap() {
+TFTBitmap::TFTBitmap(CGSize size, CGColorDepth colorDepth, bool allocImmediately) : CGBitmap() {
   _bounds = CGRect(CGPointZero, size);
   _colorDepth = colorDepth;
 
   _nativeSprite = new TFT_eSprite(TFTDisplay::instance()->nativeTFT());
+
+  if (allocImmediately) {
+    alloc();
+  }
 }
 
 TFTBitmap::~TFTBitmap() {
