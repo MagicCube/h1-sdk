@@ -30,7 +30,7 @@ void UIView::setNeedsRedraw() {
 }
 
 void UIView::redraw(bool force) {
-  if (force || needsRedraw()) {
+  if (force || _needsRedraw) {
     draw();
   }
   _needsRedraw = false;
