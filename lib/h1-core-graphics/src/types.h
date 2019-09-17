@@ -13,13 +13,13 @@ typedef uint16_t CGColor;
 // Specify the depth of color, also known as BPP (Bit per Pixel).
 enum class CGColorDepth {
   // 1-bit color which contains 2 colors.
-  MONO_1_BIT = 1,
+  BIT_1 = 1,
 
   // 8-bit color which contains 256 colors.
-  COLOR_8_BIT = 8,
+  BIT_8 = 8,
 
   // 16-bit color which contains 65,536 colors.
-  COLOR_16_BIT = 16
+  BIT_16 = 16
 };
 
 // Specify the text alignment.

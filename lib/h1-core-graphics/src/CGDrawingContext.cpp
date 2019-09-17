@@ -104,7 +104,7 @@ void CGDrawingContext::drawXBM(CGXBM *xbm, CGPoint position, CGColor color) {
 }
 
 void CGDrawingContext::fill(CGColor color) {
-  _drawable->fill(color);
+  _drawable->fillRect(frame(), color);
 }
 
 void CGDrawingContext::fillRect(CGRect rect, CGColor color) {

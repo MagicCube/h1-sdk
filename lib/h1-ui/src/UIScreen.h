@@ -10,9 +10,6 @@ public:
   // Creates a new instance of `UIScreenClass`.
   UIScreenClass();
 
-  // Initializes the screen.
-  void begin();
-
   // Gets a `CGDisplay` which represents the display of the screen.
   CGDisplay *display();
 
@@ -31,11 +28,21 @@ public:
   // Gets the size of the screen.
   CGSize size();
 
+  // Gets the global shared drawing context of the screen.
+  CGDrawingContext *drawingContext();
+
+  // Initializes the screen.
+  void begin();
+
+  // Fill the screen with black.
+  void clear();
+
   // Creates a new `CGDrawingContext` for the screen.
   CGDrawingContext *createDrawingContext(CGRect specificFrame = CGRectZero);
 
 private:
   CGDisplay *_display;
+  CGDrawingContext *_drawingContext = nullptr;
 };
 
 // The singleton of `UIScreenClass` which represents the main screen of display device.

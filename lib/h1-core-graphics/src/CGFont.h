@@ -12,19 +12,19 @@ enum class CGFontFamily {
   ADAFRUIT_8PX = 1,
 
   // Small 16 pixel high font.
-  SMALL_16PX,
+  SMALL_16PX = 2,
 
   // Medium 26 pixel high font.
-  MEDIUM_26PX,
+  MEDIUM_26PX = 4,
 
   // Large 48 pixel font, only contains characters 1234567890:-.apm.
-  LARGE_48PX,
+  LARGE_48PX = 6,
 
   // 7 segment 48 pixel font, only contains characters 1234567890:-.
-  DIGITAL_7_SEGMENT_48PX,
+  DIGITAL_7_SEGMENT_48PX = 7,
 
   // Large 75 pixel font, only contains characters 1234567890:-.
-  LARGE_75PX,
+  LARGE_75PX = 8,
 
 
   /**************************************/

@@ -1,6 +1,17 @@
 #include "UIApplication.h"
 
+UIApplicationDelegate *UIApplicationClass::delegate() {
+  return _delegate;
+}
+
+void UIApplicationClass::delegate(UIApplicationDelegate *d) {
+  _delegate = d;
+}
+
 void UIApplicationClass::begin() {
+  if (_delegate != nullptr) {
+    _delegate->applicationDidBegin();
+  }
 }
 
 unsigned long UIApplicationClass::update() {
@@ -16,7 +27,17 @@ unsigned long UIApplicationClass::update() {
   return 0;
 }
 
+void UIApplicationClass::loop() {
+  auto timeBudget = update();
+  if (timeBudget > 0) {
+    delay(timeBudget);
+  }
+}
+
 void UIApplicationClass::_doUpdate() {
+  if (_delegate != nullptr) {
+    _delegate->applicationWillUpdate();
+  }
 }
 
 UIApplicationClass UIApplication;

@@ -12,9 +12,14 @@ struct CGSize {
   // The height value of the size.
   CGInt height = 0;
 
+  // Creates a new `CGSize` which both `width` and `height` are 0.
+  CGSize() {
+    width = 0;
+    height = 0;
+  }
 
   // Creates a new `CGSize` with given `width` and `height`.
-  CGSize(CGInt p_width = 0, CGInt p_height = 0) {
+  CGSize(CGInt p_width, CGInt p_height) {
     width = p_width;
     height = p_height;
   }

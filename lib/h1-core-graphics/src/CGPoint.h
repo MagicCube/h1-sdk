@@ -12,8 +12,14 @@ struct CGPoint {
   // The y-coordinate of the point.
   CGInt y = 0;
 
+  // Creates a new `CGPoint` at (0, 0).
+  CGPoint() {
+    x = 0;
+    y = 0;
+  }
+
   // Creates a new `CGPoint` with given `x` and `y`.
-  CGPoint(CGInt p_x = 0, CGInt p_y = 0) {
+  CGPoint(CGInt p_x, CGInt p_y) {
     x = p_x;
     y = p_y;
   }

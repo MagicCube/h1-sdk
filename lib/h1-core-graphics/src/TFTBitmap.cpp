@@ -173,7 +173,7 @@ void TFTBitmap::drawString(String string, CGPoint position) {
 }
 
 void TFTBitmap::drawBitmap(CGBitmap *bitmap, CGPoint position) {
-  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+  if (bitmap->colorDepth() == CGColorDepth::BIT_16) {
     _nativeSprite->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
                              bitmap->to16BitArray());
   } else {

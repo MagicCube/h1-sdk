@@ -53,6 +53,12 @@ public:
   // Sets current font size.
   void fontSize(uint8_t value) override;
 
+  // Quickly setup font family and size.
+  void setupFont(CGFontFamily family, uint8_t size = 1) {
+    fontFamily(family);
+    fontSize(size);
+  }
+
   // Gets current text color.
   CGColor textColor() override;
 
@@ -70,6 +76,18 @@ public:
 
   // Sets current text baseline.
   void textBaseline(CGTextBaseline value) override;
+
+  // Quickly setup the alignment, baseline and color of text.
+  void setupTextStyle(CGTextAlign align, CGTextBaseline baseline, CGColor color) {
+    setupTextStyle(align, baseline);
+    textColor(color);
+  }
+
+  // Quickly setup the alignment and baseline of text.
+  void setupTextStyle(CGTextAlign align, CGTextBaseline baseline) {
+    textAlign(align);
+    textBaseline(baseline);
+  }
 
   // Draws a pixel at given point.
   void drawPixel(CGPoint point, CGColor color) override;

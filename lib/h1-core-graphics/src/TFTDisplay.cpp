@@ -2,9 +2,8 @@
 
 static TFTDisplay *__instance;
 
-TFTDisplay::TFTDisplay() {
+TFTDisplay::TFTDisplay() : _bounds(CGPointZero, TFT_WIDTH, TFT_HEIGHT) {
   _nativeDisplay = new TFT_eSPI();
-  _bounds = CGRect(CGPointZero, TFT_WIDTH, TFT_HEIGHT);
   __instance = this;
 }
 
@@ -162,23 +161,22 @@ void TFTDisplay::drawString(String string, CGPoint position) {
 }
 
 void TFTDisplay::drawBitmap(CGBitmap *bitmap, CGPoint position) {
-  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+  if (bitmap->colorDepth() == CGColorDepth::BIT_16) {
     _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
                               bitmap->to16BitArray());
   } else {
     _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
-                              bitmap->to8BitArray(), bitmap->colorDepth() == CGColorDepth::COLOR_8_BIT);
+                              bitmap->to8BitArray(), bitmap->colorDepth() == CGColorDepth::BIT_8);
   }
 }
 
 void TFTDisplay::drawBitmap(CGBitmap *bitmap, CGPoint position, CGColor transparentColor) {
-  if (bitmap->colorDepth() == CGColorDepth::COLOR_16_BIT) {
+  if (bitmap->colorDepth() == CGColorDepth::BIT_16) {
     _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
                               bitmap->to16BitArray(), transparentColor);
   } else {
     _nativeDisplay->pushImage(position.x, position.y, bitmap->size().width, bitmap->size().height,
-                              bitmap->to8BitArray(), transparentColor,
-                              bitmap->colorDepth() == CGColorDepth::COLOR_8_BIT);
+                              bitmap->to8BitArray(), transparentColor, bitmap->colorDepth() == CGColorDepth::BIT_8);
   }
 }
 

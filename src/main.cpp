@@ -4,36 +4,21 @@
 #include <h1.CoreGraphics.h>
 #include <h1.UI.h>
 
-CGDrawingContext *screenContext;
-TFTBitmap bitmap(UIScreen.size(), CGColorDepth::COLOR_8_BIT);
-CGDrawingContext *bitmapContext;
+#include "AppDelegate.h"
 
-uint8_t radius = 0;
-int8_t direction = 1;
+AppDelegate appDelegate;
 
 void setup() {
   Serial.begin(115200);
+
   UIScreen.rotation(3);
   UIScreen.begin();
+  UIScreen.clear();
 
-  screenContext = UIScreen.createDrawingContext();
-  bitmapContext = bitmap.createDrawingContext();
-  bitmapContext->fontFamily(CGFontFamily::FREE_SANS_18PT);
-  bitmapContext->textColor(CGCOLOR_RED);
-  bitmapContext->textAlign(CGTextAlign::CENTER);
-  bitmapContext->textBaseline(CGTextBaseline::MIDDLE);
-  screenContext->fill(CGCOLOR_BLACK);
+  UIApplication.delegate(&appDelegate);
+  UIApplication.begin();
 }
 
 void loop() {
-  bitmapContext->fill(CGCOLOR_RED);
-  bitmapContext->fillCircle(bitmapContext->frame().center(), radius, CGCOLOR_WHITE);
-  radius += direction * 6;
-  if (radius >= bitmapContext->size().width / 2) {
-    direction = -1;
-  } else if (radius <= 0) {
-    direction = 1;
-  }
-  bitmapContext->drawString("Hello, Henry", bitmapContext->frame().center());
-  screenContext->drawBitmap(&bitmap, CGPointZero);
+  UIApplication.loop();
 }
