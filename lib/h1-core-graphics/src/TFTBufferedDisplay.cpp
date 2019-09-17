@@ -6,8 +6,9 @@ void TFTBufferedDisplay::begin() {
 }
 
 void TFTBufferedDisplay::update() {
-  if (needsRedraw()) {
+  if (_needsRedraw) {
     _tftDisplay.drawBitmap(_buffer, CGPointZero);
+    _needsRedraw = false;
   }
 }
 
