@@ -2,6 +2,8 @@
 
 static TFTDisplay *__instance;
 
+#include "TFTUtils.h"
+
 TFTDisplay::TFTDisplay() : _bounds(CGPointZero, TFT_WIDTH, TFT_HEIGHT) {
   _nativeDisplay = new TFT_eSPI();
   __instance = this;
@@ -21,65 +23,7 @@ CGFontFamily TFTDisplay::fontFamily() {
 
 void TFTDisplay::fontFamily(CGFontFamily value) {
   _fontFamily = value;
-  uint8_t _fontFamilyValue = (uint8_t)_fontFamily;
-  if (_fontFamilyValue < 10) {
-    // Basic font
-    _nativeDisplay->setFreeFont(nullptr);
-    _nativeDisplay->setTextFont(_fontFamilyValue);
-  } else if (_fontFamilyValue < 60) {
-    switch (value) {
-    case CGFontFamily::FREE_MONO_9PT:
-      _nativeDisplay->setFreeFont(&FreeMono9pt7b);
-      break;
-    case CGFontFamily::FREE_MONO_12PT:
-      _nativeDisplay->setFreeFont(&FreeMono12pt7b);
-      break;
-    case CGFontFamily::FREE_MONO_18PT:
-      _nativeDisplay->setFreeFont(&FreeMono18pt7b);
-      break;
-    case CGFontFamily::FREE_MONO_24PT:
-      _nativeDisplay->setFreeFont(&FreeMono24pt7b);
-      break;
-    case CGFontFamily::FREE_SANS_9PT:
-      _nativeDisplay->setFreeFont(&FreeSans9pt7b);
-      break;
-    case CGFontFamily::FREE_SANS_12PT:
-      _nativeDisplay->setFreeFont(&FreeSans12pt7b);
-      break;
-    case CGFontFamily::FREE_SANS_18PT:
-      _nativeDisplay->setFreeFont(&FreeSans18pt7b);
-      break;
-    case CGFontFamily::FREE_SANS_24PT:
-      _nativeDisplay->setFreeFont(&FreeSans24pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_9PT:
-      _nativeDisplay->setFreeFont(&FreeSerif9pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_BOLD_9PT:
-      _nativeDisplay->setFreeFont(&FreeSerifBold9pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_12PT:
-      _nativeDisplay->setFreeFont(&FreeSerif12pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_BOLD_12PT:
-      _nativeDisplay->setFreeFont(&FreeSerifBold12pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_18PT:
-      _nativeDisplay->setFreeFont(&FreeSerif18pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_BOLD_18PT:
-      _nativeDisplay->setFreeFont(&FreeSerifBold18pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_24PT:
-      _nativeDisplay->setFreeFont(&FreeSerif24pt7b);
-      break;
-    case CGFontFamily::FREE_SERIF_BOLD_24PT:
-      _nativeDisplay->setFreeFont(&FreeSerifBold24pt7b);
-      break;
-    default:
-      break;
-    }
-  }
+  TFTUtils::setFontFamily(_nativeDisplay, _fontFamily);
 }
 
 uint8_t TFTDisplay::fontSize() {
@@ -201,41 +145,5 @@ void TFTDisplay::fillCircle(CGPoint center, CGInt radius, CGColor color) {
 }
 
 void TFTDisplay::_updateTextDatum() {
-  if (_textAlign == CGTextAlign::LEFT) {
-    switch (_textBaseline) {
-    case CGTextBaseline::TOP:
-      _nativeDisplay->setTextDatum(TL_DATUM);
-      break;
-    case CGTextBaseline::MIDDLE:
-      _nativeDisplay->setTextDatum(ML_DATUM);
-      break;
-    case CGTextBaseline::BOTTOM:
-      _nativeDisplay->setTextDatum(BL_DATUM);
-      break;
-    }
-  } else if (_textAlign == CGTextAlign::CENTER) {
-    switch (_textBaseline) {
-    case CGTextBaseline::TOP:
-      _nativeDisplay->setTextDatum(TC_DATUM);
-      break;
-    case CGTextBaseline::MIDDLE:
-      _nativeDisplay->setTextDatum(MC_DATUM);
-      break;
-    case CGTextBaseline::BOTTOM:
-      _nativeDisplay->setTextDatum(BC_DATUM);
-      break;
-    }
-  } else if (_textAlign == CGTextAlign::RIGHT) {
-    switch (_textBaseline) {
-    case CGTextBaseline::TOP:
-      _nativeDisplay->setTextDatum(TR_DATUM);
-      break;
-    case CGTextBaseline::MIDDLE:
-      _nativeDisplay->setTextDatum(MR_DATUM);
-      break;
-    case CGTextBaseline::BOTTOM:
-      _nativeDisplay->setTextDatum(BR_DATUM);
-      break;
-    }
-  }
+  TFTUtils::setTextDatum(_nativeDisplay, _textAlign, _textBaseline);
 }
