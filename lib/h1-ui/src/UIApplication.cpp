@@ -1,5 +1,7 @@
 #include "UIApplication.h"
 
+#include "UIScreen.h"
+
 UIApplicationDelegate *UIApplicationClass::delegate() {
   return _delegate;
 }
@@ -19,6 +21,7 @@ unsigned long UIApplicationClass::update() {
 
   _doUpdate();
   _doRedraw();
+  UIScreen.update();
 
   auto elapsedSinceLastUpdate = millis() - _lastUpdateTime;
   _lastUpdateTime = updateBeginTime;
