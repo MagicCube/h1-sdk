@@ -29,7 +29,7 @@ void UIView::setNeedsRedraw() {
   _needsRedraw = true;
 }
 
-void UIView::redraw(bool force = false) {
+void UIView::redraw(bool force) {
   if (force || needsRedraw()) {
     draw();
   }
