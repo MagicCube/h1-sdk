@@ -32,6 +32,7 @@ private:
   UIApplicationDelegate *_delegate = nullptr;
 
   void _doUpdate();
+  void _doRedraw();
 };
 
 // The singleton of `UIApplicationClass` which represents the centralized point of control and coordination for apps

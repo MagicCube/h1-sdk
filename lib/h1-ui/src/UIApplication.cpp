@@ -18,6 +18,7 @@ unsigned long UIApplicationClass::update() {
   auto updateBeginTime = millis();
 
   _doUpdate();
+  _doRedraw();
 
   auto elapsedSinceLastUpdate = millis() - _lastUpdateTime;
   _lastUpdateTime = updateBeginTime;
@@ -37,6 +38,12 @@ void UIApplicationClass::loop() {
 void UIApplicationClass::_doUpdate() {
   if (_delegate != nullptr) {
     _delegate->applicationWillUpdate();
+  }
+}
+
+void UIApplicationClass::_doRedraw() {
+  if (_delegate != nullptr) {
+    _delegate->applicationWillRedraw();
   }
 }
 
