@@ -148,7 +148,7 @@ public:
   }
 
   // Returns a new `CGPoint` which converted a local coordinate point to absolute.
-  CGPoint convert(CGPoint relativePoint) {
+  CGPoint convertPoint(CGPoint relativePoint) {
     if (_zeroTranslation) {
       return relativePoint;
     }
@@ -156,11 +156,11 @@ public:
   }
 
   // Returns a new `CGRect` which converted a local coorinate rectangle to absolute.
-  CGRect convert(CGRect relativeRect) {
+  CGRect convertRect(CGRect relativeRect) {
     if (_zeroTranslation) {
       return relativeRect;
     }
-    return CGRect(convert(relativeRect.origin), relativeRect.size);
+    return CGRect(convertPoint(relativeRect.origin), relativeRect.size);
   }
 
 private:
