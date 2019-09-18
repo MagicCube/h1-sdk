@@ -2,12 +2,17 @@
 
 #include "UIScreen.h"
 
+UIApplicationClass::UIApplicationClass() {
+  _window = new UIWindow(UIScreen.bounds());
+}
+
 UIApplicationDelegate *UIApplicationClass::delegate() {
   return _delegate;
 }
 
 void UIApplicationClass::delegate(UIApplicationDelegate *d) {
   _delegate = d;
+  _delegate->_window = _window;
 }
 
 void UIApplicationClass::begin() {
@@ -42,12 +47,11 @@ void UIApplicationClass::_doUpdate() {
   if (_delegate != nullptr) {
     _delegate->applicationWillUpdate();
   }
+  _window->update();
 }
 
 void UIApplicationClass::_doRedraw() {
-  if (_delegate != nullptr) {
-    _delegate->applicationWillRedraw();
-  }
+  _window->redraw();
 }
 
 UIApplicationClass UIApplication;
