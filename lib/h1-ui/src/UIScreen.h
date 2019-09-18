@@ -37,6 +37,7 @@ public:
   // Initializes the screen with given color depth.
   void begin(CGColorDepth colorDepth);
 
+  // Automatically called by event loop.
   void update();
 
   // Fill the screen with black.
