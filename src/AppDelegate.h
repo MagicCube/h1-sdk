@@ -5,7 +5,9 @@
 class AppDelegate : public UIApplicationDelegate {
 public:
   void applicationReadyToBegin() override {
-    _clockView = new ClockView(window()->frame());
+    // Create a clock view centered to the parent window.
+    _clockView = new ClockView(window()->frame().centerRect(214, 50));
+    // Make clock view as the root view.
     window()->rootView(_clockView);
   }
 
