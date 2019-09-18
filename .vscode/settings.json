@@ -9,6 +9,19 @@
     "deque": "cpp",
     "unordered_map": "cpp",
     "vector": "cpp",
-    "initializer_list": "cpp"
+    "initializer_list": "cpp",
+    "exception": "cpp",
+    "fstream": "cpp",
+    "functional": "cpp",
+    "istream": "cpp",
+    "new": "cpp",
+    "ostream": "cpp",
+    "sstream": "cpp",
+    "stdexcept": "cpp",
+    "streambuf": "cpp",
+    "system_error": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "typeinfo": "cpp"
   }
 }
