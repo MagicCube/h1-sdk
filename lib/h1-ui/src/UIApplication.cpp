@@ -17,7 +17,7 @@ void UIApplicationClass::delegate(UIApplicationDelegate *d) {
 
 void UIApplicationClass::begin() {
   if (_delegate != nullptr) {
-    _delegate->applicationDidBegin();
+    _delegate->applicationReadyToBegin();
   }
 }
 

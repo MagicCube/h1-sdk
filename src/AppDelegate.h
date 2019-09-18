@@ -4,7 +4,7 @@
 
 class AppDelegate : public UIApplicationDelegate {
 public:
-  void applicationDidBegin() override {
+  void applicationReadyToBegin() override {
   }
 
   void applicationWillUpdate() override {

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 
 #include "UIWindow.h"
@@ -14,7 +16,7 @@ public:
   }
 
   // Fires immediately before the end of `application.begin()`.
-  virtual void applicationDidBegin() {
+  virtual void applicationReadyToBegin() {
   }
 
   // Fires immediately after calling `application.update()`.
