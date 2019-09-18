@@ -38,3 +38,6 @@ void UIView::redraw(bool force) {
 
 void UIView::draw() {
 }
+
+void UIView::update() {
+}

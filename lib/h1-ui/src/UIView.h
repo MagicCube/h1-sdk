@@ -40,6 +40,9 @@ public:
   // Draws the image of the view. The default implementation does nothing.
   virtual void draw();
 
+  // Automatically called by event loop or parent view.
+  virtual void update();
+
 private:
   CGRect _frame;
   CGRect _bounds;
