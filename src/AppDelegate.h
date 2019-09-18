@@ -5,9 +5,8 @@
 class AppDelegate : public UIApplicationDelegate {
 public:
   void applicationReadyToBegin() override {
-  }
-
-  void applicationWillUpdate() override {
+    _clockView = new ClockView(window()->frame());
+    window()->rootView(_clockView);
   }
 
 private:

@@ -28,14 +28,14 @@ public:
 
   // Gets a boolean value, true if the view needs redraw.
   // The only way to set it true is to invoke `needsRedraw()`.
-  bool needsRedraw();
+  virtual bool needsRedraw();
 
   // Sets `needsRedraw()` to true.
-  void setNeedsRedraw();
+  virtual void setNeedsRedraw();
 
   // Try to redraw the image of view.
   // It will only invoke `draw()` if the `force` parameter is `true` or `needsRedraw()` returns `true`.
-  void redraw(bool force = false);
+  virtual void redraw(bool force = false);
 
   // Draws the image of the view. The default implementation does nothing.
   virtual void draw();
